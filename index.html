@@ -379,16 +379,10 @@
     <script>
       // --- PROTECTION : Accès uniquement via iframe Confluence ---
       (function () {
-        const ALLOWED_ORIGINS = ["https://neoteem.atlassian.net", "https://*.atlassian.net"];
-
         function isAllowedOrigin(origin) {
-          return ALLOWED_ORIGINS.some((allowed) => {
-            if (allowed.includes("*")) {
-              const pattern = new RegExp("^" + allowed.replace("*.", ".*\\.").replace(/\./g, "\\.") + "$");
-              return pattern.test(origin);
-            }
-            return origin === allowed;
-          });
+          if (!origin) return false;
+          // Autorise tous les sous-domaines atlassian.net et atlassian.com
+          return origin.includes("atlassian.net") || origin.includes("atlassian.com");
         }
 
         function checkAccess() {
@@ -401,49 +395,31 @@
             return;
           }
 
-          // Essayer de vérifier l'origine parente (peut échouer à cause de CORS)
-          try {
-            const parentOrigin = window.parent.location.origin;
-            if (!isAllowedOrigin(parentOrigin)) {
+          // On est dans une iframe, vérifier l'origine via referrer
+          const referrer = document.referrer;
+
+          // Si on a un referrer, on vérifie qu'il vient d'Atlassian
+          if (referrer) {
+            if (!isAllowedOrigin(referrer)) {
               blockAccess();
+              return;
             }
-          } catch (e) {
-            // Si on ne peut pas accéder à l'origine parente (CORS),
-            // on utilise document.referrer comme fallback
-            const referrer = document.referrer;
-            if (referrer) {
-              try {
-                const referrerOrigin = new URL(referrer).origin;
-                if (!isAllowedOrigin(referrerOrigin)) {
-                  blockAccess();
-                }
-              } catch (urlError) {
-                // Referrer invalide, autoriser (bénéfice du doute pour Confluence)
-              }
-            }
-            // Si pas de referrer et dans iframe, on autorise (probablement Confluence)
           }
+          // Si pas de referrer mais dans iframe, on autorise (Confluence bloque souvent le referrer)
         }
 
         function blockAccess() {
-          document.body.innerHTML = "";
-          const denied = document.getElementById("access-denied");
-          if (denied) {
-            denied.style.display = "flex";
-            document.body.appendChild(denied);
-          } else {
-            document.body.innerHTML = `
-                        <div style="position:fixed; top:0; left:0; width:100%; height:100%;
-                            background: linear-gradient(135deg, #2c3e50, #3498db); color:white;
-                            display:flex; flex-direction:column; justify-content:center; align-items:center;
-                            font-family: 'Segoe UI', sans-serif; text-align:center;">
-                            <h1 style="font-size:2.5rem; margin-bottom:20px;">Accès Restreint</h1>
-                            <p style="font-size:1.2rem;">
-                                Cette page est uniquement accessible via le Confluence Neoteem.<br><br> 
-                            </p>
-                        </div>
-                    `;
-          }
+          document.body.innerHTML = `
+            <div style="position:fixed; top:0; left:0; width:100%; height:100%;
+                background: linear-gradient(135deg, #2c3e50, #3498db); color:white;
+                display:flex; flex-direction:column; justify-content:center; align-items:center;
+                font-family: 'Segoe UI', sans-serif; text-align:center;">
+                <h1 style="font-size:2.5rem; margin-bottom:20px;">Accès Restreint</h1>
+                <p style="font-size:1.2rem;">
+                    Cette page est uniquement accessible via le Confluence Neoteem.
+                </p>
+            </div>
+          `;
         }
 
         // Exécuter la vérification immédiatement
