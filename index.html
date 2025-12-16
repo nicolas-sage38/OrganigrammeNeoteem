@@ -377,68 +377,6 @@
     </div>
 
     <script>
-      // --- PROTECTION : Bloquer l'accès direct (hors iframe) ---
-      (function () {
-        // Méthodes multiples pour détecter si on est dans une iframe
-        let isInIframe = false;
-
-        // Méthode 1 : window.self !== window.top
-        try {
-          isInIframe = window.self !== window.top;
-        } catch (e) {
-          // Erreur CORS = on est dans une iframe cross-origin
-          isInIframe = true;
-        }
-
-        // Méthode 2 : window.frameElement (null si pas dans iframe ou cross-origin)
-        if (!isInIframe) {
-          try {
-            // Si frameElement est null ET qu'on a accès à top, on n'est PAS dans une iframe
-            // Si on a une erreur en accédant à frameElement, c'est cross-origin = iframe
-            const fe = window.frameElement;
-            if (fe !== null) isInIframe = true;
-          } catch (e) {
-            isInIframe = true;
-          }
-        }
-
-        // Méthode 3 : window.parent !== window
-        if (!isInIframe) {
-          try {
-            isInIframe = window.parent !== window;
-          } catch (e) {
-            isInIframe = true;
-          }
-        }
-
-        // Méthode 4 : Vérifier window.location vs parent.location
-        if (!isInIframe) {
-          try {
-            // Si on peut accéder à parent.location et qu'elle est différente
-            if (window.parent.location.href !== window.location.href) {
-              isInIframe = true;
-            }
-          } catch (e) {
-            // Erreur = cross-origin = iframe
-            isInIframe = true;
-          }
-        }
-
-        if (!isInIframe) {
-          // Accès direct non autorisé - bloquer immédiatement
-          document.body.innerHTML = `
-            <div style="position:fixed; top:0; left:0; width:100%; height:100%;
-                background: linear-gradient(135deg, #2c3e50, #3498db); color:white;
-                display:flex; flex-direction:column; justify-content:center; align-items:center;
-                font-family: 'Segoe UI', sans-serif; text-align:center;">
-                <h1 style="font-size:2.5rem; margin-bottom:20px;">Accès Restreint</h1>
-                <p style="font-size:1.2rem;">
-                    Cette page est uniquement accessible via le Confluence Neoteem.
-                </p>
-            </div>
-          `;
-        }
-      })();
       // --- CONFIGURATION DES DONNÉES ---
       // ASTUCE : Pour que le manager soit à gauche, mets-le en PREMIER dans la liste 'members'
 
