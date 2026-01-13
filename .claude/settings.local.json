@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(du:*)",
+      "Bash(node optimize-images.js:*)"
+    ],
+    "additionalDirectories": [
+      "c:\\ProjetsNeoteem\\front\\OrganigrammeNeoteem"
+    ]
+  }
+}
