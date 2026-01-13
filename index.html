@@ -128,7 +128,7 @@
 
       /* L'effet de zoom au survol s'applique maintenant au wrapper */
       .leader-img-wrapper:hover {
-        transform: scale(1.7) rotate(2deg);
+        transform: scale(1.2) rotate(2deg);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         z-index: 10;
       }
@@ -245,9 +245,9 @@
         color: var(--mgr-text) !important;
       }
 
-      /* ZOOM AU SURVOL (1.50) */
+      /* ZOOM AU SURVOL */
       .card-container:hover {
-        transform: scale(2.2) translateY(-10px);
+        transform: scale(1.2) translateY(-10px);
         z-index: 100;
       }
 
@@ -316,7 +316,7 @@
 
       /* Effet de survol encore plus impressionnant pour les fondateurs */
       .card-container.founder-container:hover {
-        transform: scale(1.5) translateY(-15px); /* Un peu moins de scale car déjà gros */
+        transform: scale(1.2) translateY(-15px); /* Un peu moins de scale car déjà gros */
       }
 
       @keyframes fadeIn {
@@ -434,9 +434,8 @@
             {
               title: "Infrastructure",
               members: [
-                { name: "Rémy MARION", role: "Reponsable Infrastruture", img: "Rémy MARION.jpeg", isManager: true },
+                { name: "Rémy MARION", role: "Responsable Infrastructure", img: "Rémy MARION.jpeg", isManager: true },
                 { name: "Fabien PINGRET", role: "Administrateur Systèmes & Réseaux", img: "Fabien Pingret.jpg" },
-                { name: "Quentin LORANT", role: "Administrateur Systèmes & Réseaux", img: "Quentin LORANT.jpg" },
               ],
             },
             {
@@ -606,8 +605,6 @@
                       img: "Alexandra Deaucourt.jpg",
                       isManager: true,
                     },
-                    { name: "Laura EDOUARD", role: "Administratif", img: "Laura EDOUARD.jpeg" },
-                    { name: "Sonia FOUQUET", role: "Administratif", img: "Sonia Fouquet.jpg" },
                   ],
                 },
                 {
@@ -628,6 +625,8 @@
                       role: "Support",
                       img: "Jean-Marc Soler a la recherche de l_erreurv 224.jpg",
                     },
+                    { name: "Laura EDOUARD", role: "Support", img: "Laura EDOUARD.jpeg" },
+                    { name: "Sonia FOUQUET", role: "Support", img: "Sonia Fouquet.jpg" },
                   ],
                 },
                 {
@@ -651,11 +650,11 @@
                     // Ludo est manager aussi (tuile bleue)
                     {
                       name: "Marianne CLASTOT",
-                      role: "Responsable FormatiExpérience Clients",
+                      role: "Responsable Expérience Clients",
                       img: "Marianne Clastot.jpg",
                       isManager: true,
                     },
-                    { name: "Valéry MARTYROSIAN", role: "Support", img: "Valery Martyrosyan.jpeg" },
+                    { name: "Valéry MARTYROSYAN", role: "Support", img: "Valery Martyrosyan.jpeg" },
                     { name: "Margaux BELLOUBET", role: "Support", img: "Margaux Belloubet.png" },
                   ],
                 },
