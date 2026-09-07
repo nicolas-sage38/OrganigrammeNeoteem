@@ -318,6 +318,22 @@
         opacity: 1;
       }
 
+      /* Anneau de focus clavier aux couleurs de la marque, a la place
+         du contour noir par defaut du navigateur */
+      .tabs button:focus-visible {
+        outline: 2px solid var(--teal);
+        outline-offset: -5px;
+        border-radius: 10px;
+      }
+
+      a:focus-visible,
+      .btn:focus-visible,
+      .toggle:focus-within {
+        outline: 2px solid var(--teal);
+        outline-offset: 3px;
+        border-radius: 8px;
+      }
+
       /* ---------------------------------------------------------------
          Contenu
       --------------------------------------------------------------- */
