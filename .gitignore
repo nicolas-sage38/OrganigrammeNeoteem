@@ -1,0 +1,10 @@
+# Secrets : la cle service_role ne doit jamais partir sur GitHub
+scripts/.env.local
+
+# Divers
+node_modules/
+.playwright-mcp/
+*.log
+
+# fichier de message de commit temporaire
+.commit-msg.txt

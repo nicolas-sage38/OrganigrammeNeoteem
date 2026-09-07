@@ -1,0 +1,1515 @@
+{
+  "generated_at": "2026-09-07T07:23:28.316Z",
+  "people": [
+    {
+      "slug": "yves-trevisiol",
+      "full_name": "Yves TREVISIOL",
+      "source_file": "Yves Trevisiol.jpg"
+    },
+    {
+      "slug": "jean-louis-mangani",
+      "full_name": "Jean-Louis MANGANI",
+      "source_file": "JLM.jpg"
+    },
+    {
+      "slug": "philippe-thuet",
+      "full_name": "Philippe THUET",
+      "source_file": "Philippe THUET.jpg"
+    },
+    {
+      "slug": "gaylord-marchand",
+      "full_name": "Gaylord MARCHAND",
+      "source_file": "Gaylord Marchand.jpg"
+    },
+    {
+      "slug": "marion-quesne",
+      "full_name": "Marion QUESNE",
+      "source_file": "Marion Quesne.jpg"
+    },
+    {
+      "slug": "sylvie-monod",
+      "full_name": "Sylvie MONOD",
+      "source_file": null
+    },
+    {
+      "slug": "laurent-jacquon",
+      "full_name": "Laurent JACQUON",
+      "source_file": "Laurent Jacquon.jpg"
+    },
+    {
+      "slug": "asiya-boukersi",
+      "full_name": "Asiya BOUKERSI",
+      "source_file": "Asiya Boukersi.jpeg"
+    },
+    {
+      "slug": "thomas-lecoutre",
+      "full_name": "Thomas LECOUTRE",
+      "source_file": "Thomas Lecoutre et Maïa.jpg"
+    },
+    {
+      "slug": "cem-dalhancer",
+      "full_name": "Cem DALHANCER",
+      "source_file": null
+    },
+    {
+      "slug": "david-beaufour",
+      "full_name": "David BEAUFOUR",
+      "source_file": "David BEAUFOUR.jpg"
+    },
+    {
+      "slug": "johann-lotz",
+      "full_name": "Johann LOTZ",
+      "source_file": "Johann LOTZ.jpg"
+    },
+    {
+      "slug": "yann-commerot",
+      "full_name": "Yann COMMEROT",
+      "source_file": "Yann Commerot.jpg"
+    },
+    {
+      "slug": "david-miquel",
+      "full_name": "David MIQUEL",
+      "source_file": "David MIQUEL.jpg"
+    },
+    {
+      "slug": "pauline-allemand",
+      "full_name": "Pauline ALLEMAND",
+      "source_file": "Pauline Allemand.JPEG"
+    },
+    {
+      "slug": "denis-salle",
+      "full_name": "Denis SALLE",
+      "source_file": "Denis Salle.png"
+    },
+    {
+      "slug": "alexandre-perrein",
+      "full_name": "Alexandre PERREIN",
+      "source_file": "Alexandre PERREIN.PNG"
+    },
+    {
+      "slug": "remy-marion",
+      "full_name": "Rémy MARION",
+      "source_file": "Rémy MARION.jpeg"
+    },
+    {
+      "slug": "fabien-pingret",
+      "full_name": "Fabien PINGRET",
+      "source_file": "Fabien Pingret.jpg"
+    },
+    {
+      "slug": "maxime-bulteau",
+      "full_name": "Maxime BULTEAU",
+      "source_file": null
+    },
+    {
+      "slug": "jean-hofnung",
+      "full_name": "Jean HOFNUNG",
+      "source_file": "Jean Hofnung.png"
+    },
+    {
+      "slug": "tifanny-serafin",
+      "full_name": "Tifanny SERAFIN",
+      "source_file": "tifanny-serafin.png"
+    },
+    {
+      "slug": "trang-nguyen",
+      "full_name": "Trang NGUYEN",
+      "source_file": "Trang.jpeg"
+    },
+    {
+      "slug": "matthieu-chemin",
+      "full_name": "Matthieu CHEMIN",
+      "source_file": "Matthieu_Chemin.jpg"
+    },
+    {
+      "slug": "zoe-bonnefoy",
+      "full_name": "Zoé BONNEFOY",
+      "source_file": null
+    },
+    {
+      "slug": "alexandre-halary",
+      "full_name": "Alexandre HALARY",
+      "source_file": "Alexandre Halary.jpg"
+    },
+    {
+      "slug": "marion-garet",
+      "full_name": "Marion GARET",
+      "source_file": "Marion Garet.png"
+    },
+    {
+      "slug": "lionel-peirano",
+      "full_name": "Lionel PEIRANO",
+      "source_file": "Lionel Peirano.png"
+    },
+    {
+      "slug": "philippe-laroppe",
+      "full_name": "Philippe LAROPPE",
+      "source_file": "Philippe Laroppe.jpg"
+    },
+    {
+      "slug": "david-costanza",
+      "full_name": "David COSTANZA",
+      "source_file": "David Costanza.jpeg"
+    },
+    {
+      "slug": "caroline-naudet",
+      "full_name": "Caroline NAUDET",
+      "source_file": "Caroline Naudet.jpg"
+    },
+    {
+      "slug": "charlotte-hatton",
+      "full_name": "Charlotte HATTON",
+      "source_file": "Charlotte Hatton.jpg"
+    },
+    {
+      "slug": "emmanuel-methlin",
+      "full_name": "Emmanuel METHLIN",
+      "source_file": null
+    },
+    {
+      "slug": "charly-kartobi",
+      "full_name": "Charly KARTOBI",
+      "source_file": null
+    },
+    {
+      "slug": "tom-gajda",
+      "full_name": "Tom GAJDA",
+      "source_file": "Tom GAJDA.jpg"
+    },
+    {
+      "slug": "nicolas-sage",
+      "full_name": "Nicolas SAGE",
+      "source_file": "Nico Sage.jpg"
+    },
+    {
+      "slug": "matthias-faucon",
+      "full_name": "Matthias FAUCON",
+      "source_file": "Matthias FAUCON.jpeg"
+    },
+    {
+      "slug": "jimmy-francois",
+      "full_name": "Jimmy FRANCOIS",
+      "source_file": "François Jimmy.jpeg"
+    },
+    {
+      "slug": "oscar-braun",
+      "full_name": "Oscar BRAUN",
+      "source_file": "Oscar Braun.jpg"
+    },
+    {
+      "slug": "ahmed-abass",
+      "full_name": "Ahmed ABASS",
+      "source_file": null
+    },
+    {
+      "slug": "mathieu-rojo",
+      "full_name": "Mathieu ROJO",
+      "source_file": null
+    },
+    {
+      "slug": "remy-gigaut",
+      "full_name": "Rémy GIGAUT",
+      "source_file": "Rémy Gigaut Heineken.jpg"
+    },
+    {
+      "slug": "denis-thevenot",
+      "full_name": "Denis THEVENOT",
+      "source_file": "Denis THEVENOT.jpeg"
+    },
+    {
+      "slug": "jeremy-fraissenet",
+      "full_name": "Jérémy FRAISSENET",
+      "source_file": "Jérémy Fraissenet.jpg"
+    },
+    {
+      "slug": "loic-tronet",
+      "full_name": "Loïc TRONET",
+      "source_file": "LOïc TRONET.jpg"
+    },
+    {
+      "slug": "noam-lemaitre",
+      "full_name": "Noam LEMAITRE",
+      "source_file": "noam 5.jpeg"
+    },
+    {
+      "slug": "jeremy-khamdy",
+      "full_name": "Jérémy KHAMDY",
+      "source_file": "Jérémy Khamdy.jpeg"
+    },
+    {
+      "slug": "jerome-arrighi",
+      "full_name": "Jérôme ARRIGHI",
+      "source_file": "Jérome ARRIGHI.jpg"
+    },
+    {
+      "slug": "raphael-picard",
+      "full_name": "Raphael PICARD",
+      "source_file": "Raphael PICARD.jpeg"
+    },
+    {
+      "slug": "marie-laure-cannillo",
+      "full_name": "Marie-Laure CANNILLO",
+      "source_file": "Marie-Laure Cannillo.jpg"
+    },
+    {
+      "slug": "thibaud-fernandez",
+      "full_name": "Thibaud FERNANDEZ",
+      "source_file": "Thibaud Fernandez et sa supportrice numéro 1 LANA.jpg"
+    },
+    {
+      "slug": "rowin-boissin",
+      "full_name": "Rowin BOISSIN",
+      "source_file": "Rowin Boissin.png"
+    },
+    {
+      "slug": "bastien-stagnoli",
+      "full_name": "Bastien STAGNOLI",
+      "source_file": "Bastien_Stagnoli.jpg"
+    },
+    {
+      "slug": "gwendal-bolle",
+      "full_name": "Gwendal BOLLE",
+      "source_file": "Gwendal Bolle.png"
+    },
+    {
+      "slug": "zinedine-sayad",
+      "full_name": "Zinedine SAYAD",
+      "source_file": "sayadZinedine.jpg"
+    },
+    {
+      "slug": "narjis-trevisiol",
+      "full_name": "Narjis TREVISIOL",
+      "source_file": "Narjis Trevisiol.jpg"
+    },
+    {
+      "slug": "marie-amelie-duarte",
+      "full_name": "Marie-Amélie DUARTE",
+      "source_file": null
+    },
+    {
+      "slug": "marlene-tremblay",
+      "full_name": "Marlène TREMBLAY",
+      "source_file": null
+    },
+    {
+      "slug": "mehdi-julien-foudil",
+      "full_name": "Mehdi-Julien FOUDIL",
+      "source_file": "Mehdi-Julien_Foudil.jpeg"
+    },
+    {
+      "slug": "matheo-riberon",
+      "full_name": "Mathéo RIBERON",
+      "source_file": null
+    },
+    {
+      "slug": "marie-carrat",
+      "full_name": "Marie CARRAT",
+      "source_file": "Marie CARRAT.jpg"
+    },
+    {
+      "slug": "yannick-moniez",
+      "full_name": "Yannick MONIEZ",
+      "source_file": "Yannick Moniez.jpg"
+    },
+    {
+      "slug": "aurelien-reix",
+      "full_name": "Aurélien REIX",
+      "source_file": "Aurélien et Raphael REIX.jpg"
+    },
+    {
+      "slug": "stephane-comte",
+      "full_name": "Stéphane COMTE",
+      "source_file": "Stephane Comte.jpg"
+    },
+    {
+      "slug": "louis-hughes",
+      "full_name": "Louis HUGHES",
+      "source_file": "Louis Hughes.jpg"
+    },
+    {
+      "slug": "famara-sane",
+      "full_name": "Famara SANE",
+      "source_file": "Famara.jpg"
+    },
+    {
+      "slug": "marion-rochoir",
+      "full_name": "Marion ROCHOIR",
+      "source_file": "Marion ROCHOIR.jpg"
+    },
+    {
+      "slug": "henrique-cabeleira-marques",
+      "full_name": "Henrique CABELEIRA MARQUES",
+      "source_file": null
+    },
+    {
+      "slug": "romain-grime",
+      "full_name": "Romain GRIME",
+      "source_file": null
+    },
+    {
+      "slug": "mohamed-khorchani",
+      "full_name": "Mohamed KHORCHANI",
+      "source_file": null
+    },
+    {
+      "slug": "yanis-azag",
+      "full_name": "Yanis AZAG",
+      "source_file": "Yanis Azag.jpg"
+    },
+    {
+      "slug": "marc-trarieux",
+      "full_name": "Marc TRARIEUX",
+      "source_file": "Marc Trarieux.jpg"
+    },
+    {
+      "slug": "aziz-djoumad",
+      "full_name": "Aziz DJOUMAD",
+      "source_file": null
+    },
+    {
+      "slug": "matthieu-lesieur",
+      "full_name": "Matthieu LESIEUR",
+      "source_file": "Mathieu LESIEUR.jpeg"
+    },
+    {
+      "slug": "charlotte-leon",
+      "full_name": "Charlotte LEON",
+      "source_file": "Charlotte LEON.jpg"
+    },
+    {
+      "slug": "valerie-zany",
+      "full_name": "Valérie ZANY",
+      "source_file": "Valérie ZANI.jpg"
+    },
+    {
+      "slug": "jonas-guillaume",
+      "full_name": "Jonas GUILLAUME",
+      "source_file": null
+    },
+    {
+      "slug": "christophe-valada",
+      "full_name": "Christophe VALADA",
+      "source_file": null
+    },
+    {
+      "slug": "alexandra-deaucourt",
+      "full_name": "Alexandra DEAUCOURT",
+      "source_file": "Alexandra Deaucourt.jpg"
+    },
+    {
+      "slug": "laura-edouard",
+      "full_name": "Laura EDOUARD",
+      "source_file": "Laura EDOUARD.jpeg"
+    },
+    {
+      "slug": "sonia-fouquet",
+      "full_name": "Sonia FOUQUET",
+      "source_file": "Sonia Fouquet.jpg"
+    },
+    {
+      "slug": "pauline-da-costa",
+      "full_name": "Pauline DA COSTA",
+      "source_file": "Pauline DA COSTA.jpg"
+    },
+    {
+      "slug": "alexandra-duarte",
+      "full_name": "Alexandra DUARTE",
+      "source_file": "Duarte Alexandra.jpg"
+    },
+    {
+      "slug": "nathalie-pinard",
+      "full_name": "Nathalie PINARD",
+      "source_file": "Nathalie PINARD.jpg"
+    },
+    {
+      "slug": "fabrice-magnan-de-bellevue",
+      "full_name": "Fabrice MAGNAN DE BELLEVUE",
+      "source_file": "Fabrice Magan de Bellevue.jpg"
+    },
+    {
+      "slug": "audrey-boussiere",
+      "full_name": "Audrey BOUSSIERE",
+      "source_file": "Audrey BOUSSIERES.png"
+    },
+    {
+      "slug": "jean-marc-soler",
+      "full_name": "Jean-Marc SOLER",
+      "source_file": "Jean-Marc Soler a la recherche de l_erreurv 224.jpg"
+    },
+    {
+      "slug": "anne-dupuis",
+      "full_name": "Anne DUPUIS",
+      "source_file": "Anne Dupuy.jpeg"
+    },
+    {
+      "slug": "sylvie-andre",
+      "full_name": "Sylvie ANDRE",
+      "source_file": "Sylvie ANDRE.PNG"
+    },
+    {
+      "slug": "nadege-duponchel",
+      "full_name": "Nadège DUPONCHEL",
+      "source_file": "Nadege Duponchel.jpg"
+    },
+    {
+      "slug": "oifidhou-issa",
+      "full_name": "Oifidhou ISSA",
+      "source_file": null
+    },
+    {
+      "slug": "marianne-clastot",
+      "full_name": "Marianne CLASTOT",
+      "source_file": "Marianne Clastot.jpg"
+    },
+    {
+      "slug": "valery-martyrosian",
+      "full_name": "Valéry MARTYROSIAN",
+      "source_file": "Valery Martyrosyan.jpeg"
+    },
+    {
+      "slug": "margaux-belloubet",
+      "full_name": "Margaux BELLOUBET",
+      "source_file": "Margaux Belloubet.png"
+    },
+    {
+      "slug": "morgane-gil",
+      "full_name": "Morgane GIL",
+      "source_file": "Morgane GIL.jpg"
+    },
+    {
+      "slug": "ghislaine",
+      "full_name": "Ghislaine",
+      "source_file": "Ghislaine Brunet.jpg"
+    },
+    {
+      "slug": "ingrid-rodriguez",
+      "full_name": "Ingrid RODRIGUEZ",
+      "source_file": "Ingrid Rodriguez.png"
+    },
+    {
+      "slug": "ludovic-lamiaud",
+      "full_name": "Ludovic LAMIAUD",
+      "source_file": "Ludovic LAMIAUD.png"
+    },
+    {
+      "slug": "perrine-tissot-dupont",
+      "full_name": "Perrine TISSOT DUPONT",
+      "source_file": null
+    },
+    {
+      "slug": "veronique-daudet",
+      "full_name": "Véronique DAUDET",
+      "source_file": "Véronique Daudet.jpg"
+    }
+  ],
+  "teams": [
+    {
+      "slug": "fondateurs",
+      "label": "Fondateurs",
+      "position": 0,
+      "leader_name": "Neoteem",
+      "leader_role": "Fondateurs",
+      "leader_source_file": "logo-Neoteem_icono.jpg",
+      "groups": [
+        {
+          "title": "",
+          "position": 0,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "yves-trevisiol",
+                  "role": "Président",
+                  "is_manager": false,
+                  "is_founder": true,
+                  "position": 0
+                },
+                {
+                  "person": "jean-louis-mangani",
+                  "role": "Directeur Commercial",
+                  "is_manager": false,
+                  "is_founder": true,
+                  "position": 1
+                },
+                {
+                  "person": "philippe-thuet",
+                  "role": "Directeur Produit & Opérations",
+                  "is_manager": false,
+                  "is_founder": true,
+                  "position": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "migration-it",
+      "label": "Migration & IT",
+      "position": 1,
+      "leader_name": "Benjamin MANGANI",
+      "leader_role": "Directeur Général",
+      "leader_source_file": "Benjamin Mangani.png",
+      "groups": [
+        {
+          "title": "Consultants Migration",
+          "position": 0,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "gaylord-marchand",
+                  "role": "Reponsable Consultants Migration",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "marion-quesne",
+                  "role": "Consultante",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "sylvie-monod",
+                  "role": "Consultante",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "laurent-jacquon",
+                  "role": "Consultant",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "asiya-boukersi",
+                  "role": "Consultante",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "thomas-lecoutre",
+                  "role": "Consultant",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                },
+                {
+                  "person": "cem-dalhancer",
+                  "role": "Consultant migration",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Développeurs Migration",
+          "position": 1,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "david-beaufour",
+                  "role": "Reponsable Développeurs Migration",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "johann-lotz",
+                  "role": "Développeur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "yann-commerot",
+                  "role": "Développeur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "david-miquel",
+                  "role": "Développeur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "pauline-allemand",
+                  "role": "Développeur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "denis-salle",
+                  "role": "Développeur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                },
+                {
+                  "person": "alexandre-perrein",
+                  "role": "Développeur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Infrastructure",
+          "position": 2,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "remy-marion",
+                  "role": "Reponsable Infrastruture",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "fabien-pingret",
+                  "role": "Administrateur Systèmes & Réseaux",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "maxime-bulteau",
+                  "role": "Administrateur Systèmes & Réseaux",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ilot Technique",
+          "position": 3,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "jean-hofnung",
+                  "role": "Reponsable Architecture",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "tifanny-serafin",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "trang-nguyen",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "produits-operations",
+      "label": "Produits & Opérations",
+      "position": 2,
+      "leader_name": "Nils TREVISIOL",
+      "leader_role": "Directeur Général",
+      "leader_source_file": "Nils Trevisiol.png",
+      "groups": [
+        {
+          "title": "UX Design",
+          "position": 0,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "matthieu-chemin",
+                  "role": "UX Designer",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "zoe-bonnefoy",
+                  "role": "UX Designer",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ilot Syndic & Qualité",
+          "position": 1,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "alexandre-halary",
+                  "role": "Directeur Produit & Qualité",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "label": "Service Qualité",
+              "position": 1,
+              "assignments": [
+                {
+                  "person": "alexandre-halary",
+                  "role": "Reponsable Qualité",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "marion-garet",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "lionel-peirano",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "philippe-laroppe",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "david-costanza",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "caroline-naudet",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                },
+                {
+                  "person": "charlotte-hatton",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 6
+                },
+                {
+                  "person": "emmanuel-methlin",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 7
+                },
+                {
+                  "person": "charly-kartobi",
+                  "role": "Qualité",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 8
+                }
+              ]
+            },
+            {
+              "label": "Ilot Syndic",
+              "position": 2,
+              "assignments": [
+                {
+                  "person": "tom-gajda",
+                  "role": "PO",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "nicolas-sage",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "matthias-faucon",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "jimmy-francois",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "oscar-braun",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "ahmed-abass",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                }
+              ]
+            },
+            {
+              "label": "Ilot en création",
+              "position": 3,
+              "assignments": [
+                {
+                  "person": "mathieu-rojo",
+                  "role": "Product Owner",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ilot Gérance Propriétaire & IA",
+          "position": 2,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "remy-gigaut",
+                  "role": "PO",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "label": "Ilot Gérance Propriétaire",
+              "position": 1,
+              "assignments": [
+                {
+                  "person": "remy-gigaut",
+                  "role": "PO",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "denis-thevenot",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "jeremy-fraissenet",
+                  "role": "Dev Full Stack",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "loic-tronet",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "noam-lemaitre",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "jeremy-khamdy",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                }
+              ]
+            },
+            {
+              "label": "Ilot IA",
+              "position": 2,
+              "assignments": [
+                {
+                  "person": "remy-gigaut",
+                  "role": "PO",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "jerome-arrighi",
+                  "role": "Dev IA",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "raphael-picard",
+                  "role": "Dev IA",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ilot Gérance Locataire",
+          "position": 3,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "marie-laure-cannillo",
+                  "role": "PO",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "thibaud-fernandez",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "rowin-boissin",
+                  "role": "Dev WWW",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "bastien-stagnoli",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "gwendal-bolle",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "zinedine-sayad",
+                  "role": "Dev BDD",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Parcours Client",
+          "position": 4,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "narjis-trevisiol",
+                  "role": "Directrice des Opérations",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                }
+              ]
+            },
+            {
+              "label": "Rattachées Direction",
+              "position": 1,
+              "assignments": [
+                {
+                  "person": "marie-amelie-duarte",
+                  "role": "Alternante",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "marlene-tremblay",
+                  "role": "Chargée d'accueil et de services",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                }
+              ]
+            },
+            {
+              "label": "Contenu Pédagogique",
+              "position": 2,
+              "assignments": [
+                {
+                  "person": "mehdi-julien-foudil",
+                  "role": "E-Learning",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "matheo-riberon",
+                  "role": "Alternant contenu pédagogique",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                }
+              ]
+            },
+            {
+              "label": "Administratif",
+              "position": 3,
+              "assignments": [
+                {
+                  "person": "marie-carrat",
+                  "role": "Responsable Adminsitrative",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "yannick-moniez",
+                  "role": "Administratif",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                }
+              ]
+            },
+            {
+              "label": "Formation Syndic",
+              "position": 4,
+              "assignments": [
+                {
+                  "person": "aurelien-reix",
+                  "role": "Responsable Formation",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "stephane-comte",
+                  "role": "Consultant Formateur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "louis-hughes",
+                  "role": "Consultant Formateur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "famara-sane",
+                  "role": "Consultant Formateur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "marion-rochoir",
+                  "role": "Consultante Formatrice",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "henrique-cabeleira-marques",
+                  "role": "Consultant Formation",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                },
+                {
+                  "person": "romain-grime",
+                  "role": "Consultant",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 6
+                },
+                {
+                  "person": "mohamed-khorchani",
+                  "role": "Consultant",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 7
+                }
+              ]
+            },
+            {
+              "label": "Formation Gérance",
+              "position": 5,
+              "assignments": [
+                {
+                  "person": "yanis-azag",
+                  "role": "Responsable Formation",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "marc-trarieux",
+                  "role": "Administratif",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "aziz-djoumad",
+                  "role": "Consultant Formateur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "matthieu-lesieur",
+                  "role": "Consultant Formateur",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "charlotte-leon",
+                  "role": "Consultante Formatrice",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                },
+                {
+                  "person": "valerie-zany",
+                  "role": "Consultante Formatrice",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 5
+                },
+                {
+                  "person": "jonas-guillaume",
+                  "role": "Consultant",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 6
+                },
+                {
+                  "person": "christophe-valada",
+                  "role": "Consultant",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 7
+                }
+              ]
+            },
+            {
+              "label": "Assistance Au Démarrage",
+              "position": 6,
+              "assignments": [
+                {
+                  "person": "alexandra-deaucourt",
+                  "role": "Responsable Assistance Au Démarrage",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "laura-edouard",
+                  "role": "Support au démarrage",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "sonia-fouquet",
+                  "role": "Support au démarrage",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "pauline-da-costa",
+                  "role": "Support au démarrage",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                }
+              ]
+            },
+            {
+              "label": "Support Syndic",
+              "position": 7,
+              "assignments": [
+                {
+                  "person": "alexandra-duarte",
+                  "role": "Responsable Support Gérance",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "nathalie-pinard",
+                  "role": "Support",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "fabrice-magnan-de-bellevue",
+                  "role": "Support",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "audrey-boussiere",
+                  "role": "Support",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                },
+                {
+                  "person": "jean-marc-soler",
+                  "role": "Support",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 4
+                }
+              ]
+            },
+            {
+              "label": "Support Gérance",
+              "position": 8,
+              "assignments": [
+                {
+                  "person": "anne-dupuis",
+                  "role": "Responsable Support Gérance",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "sylvie-andre",
+                  "role": "Support",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "nadege-duponchel",
+                  "role": "Support",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "oifidhou-issa",
+                  "role": "Support clients",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                }
+              ]
+            },
+            {
+              "label": "CSM & Support",
+              "position": 9,
+              "assignments": [
+                {
+                  "person": "marianne-clastot",
+                  "role": "Responsable Expérience clients",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "valery-martyrosian",
+                  "role": "CSM",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "margaux-belloubet",
+                  "role": "CSM",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                },
+                {
+                  "person": "morgane-gil",
+                  "role": "CSM",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "commerce-comptabilite-rh",
+      "label": "Commerce - Comptabilité - RH",
+      "position": 3,
+      "leader_name": "Romain TREVISIOL",
+      "leader_role": "Président",
+      "leader_source_file": "Romain TREVISIOL.jpeg",
+      "groups": [
+        {
+          "title": "Comptabilité & RH",
+          "position": 0,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "ghislaine",
+                  "role": "DAF",
+                  "is_manager": true,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "ingrid-rodriguez",
+                  "role": "Comptable",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Équipe Commerciale",
+          "position": 1,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "yves-trevisiol",
+                  "role": "Commercial",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                },
+                {
+                  "person": "ludovic-lamiaud",
+                  "role": "Commercial",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 1
+                },
+                {
+                  "person": "perrine-tissot-dupont",
+                  "role": "Commercial",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Equipe Projet",
+          "position": 2,
+          "sub_groups": [
+            {
+              "label": null,
+              "position": 0,
+              "assignments": [
+                {
+                  "person": "veronique-daudet",
+                  "role": "Chef de projet",
+                  "is_manager": false,
+                  "is_founder": false,
+                  "position": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

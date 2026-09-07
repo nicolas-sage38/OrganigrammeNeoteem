@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administration - Organigramme Neoteem</title>
+    <style>
+      :root {
+        --navy: #013677;
+        --navy-soft: #eef3f9;
+        --teal: #00a998;
+        --teal-soft: #e9f7f5;
+        --red: #c0392b;
+        --red-soft: #fdeeec;
+
+        --ink: #0f1b2d;
+        --ink-2: #56616f;
+        --ink-3: #8b95a2;
+        --line: #e5e8ec;
+        --line-2: #d4d9e0;
+        --surface: #ffffff;
+        --canvas: #f6f7f9;
+        --tint: #f2f6fa;
+
+        --radius: 14px;
+        --radius-sm: 9px;
+        --shadow: 0 1px 2px rgba(15, 27, 45, 0.04);
+        --shadow-lift: 0 8px 24px rgba(15, 27, 45, 0.1);
+
+        --font:
+          "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial,
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: 15px;
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+
+      /* ---------------------------------------------------------------
+         Barre superieure
+      --------------------------------------------------------------- */
+      header.topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 0 28px;
+        height: 64px;
+      }
+
+      .brand img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+
+      header.topbar h1 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        padding-left: 20px;
+        border-left: 1px solid var(--line);
+      }
+
+      .spacer {
+        flex: 1;
+      }
+
+      .user-mail {
+        font-size: 0.8rem;
+        color: var(--ink-3);
+      }
+
+      header.topbar a {
+        font-size: 0.8rem;
+        color: var(--ink-2);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      header.topbar a:hover {
+        color: var(--navy);
+        border-bottom-color: var(--line-2);
+      }
+
+      /* ---------------------------------------------------------------
+         Onglets
+      --------------------------------------------------------------- */
+      .tabs {
+        position: sticky;
+        top: 64px;
+        z-index: 19;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 4px;
+        padding: 0 28px;
+      }
+
+      .tabs button {
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink-2);
+        padding: 14px 14px 13px 14px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+      }
+
+      .tabs button:hover {
+        color: var(--ink);
+      }
+
+      .tabs button.active {
+        color: var(--navy);
+        font-weight: 600;
+        border-bottom-color: var(--navy);
+      }
+
+      /* ---------------------------------------------------------------
+         Mise en page
+      --------------------------------------------------------------- */
+      main {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 24px 28px 90px 28px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px 22px 22px 22px;
+      }
+
+      .panel > h2 {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--ink-2);
+        padding-bottom: 12px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      /* ---------------------------------------------------------------
+         Champs et boutons
+      --------------------------------------------------------------- */
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="file"],
+      select {
+        font-family: inherit;
+        font-size: 0.87rem;
+        color: var(--ink);
+        background: var(--surface);
+        border: 1px solid var(--line-2);
+        border-radius: var(--radius-sm);
+        padding: 8px 11px;
+        min-width: 0;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      input[type="file"] {
+        padding: 6px 8px;
+        font-size: 0.78rem;
+        color: var(--ink-3);
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--navy);
+        box-shadow: 0 0 0 3px var(--navy-soft);
+      }
+
+      input::placeholder {
+        color: var(--ink-3);
+      }
+
+      label.field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-3);
+      }
+
+      /* Champ d'edition en ligne : discret, se revele au survol */
+      input.inline-input {
+        border-color: transparent;
+        background: transparent;
+      }
+
+      input.inline-input:hover {
+        border-color: var(--line-2);
+        background: var(--surface);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-sm);
+        padding: 8px 14px;
+        font-family: inherit;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: var(--navy);
+        color: white;
+        white-space: nowrap;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .btn:hover {
+        background: #002a5e;
+      }
+
+      .btn.secondary {
+        background: var(--surface);
+        border-color: var(--line-2);
+        color: var(--ink);
+      }
+
+      .btn.secondary:hover {
+        background: var(--canvas);
+        border-color: var(--ink-3);
+      }
+
+      .btn.danger {
+        background: var(--surface);
+        border-color: var(--line-2);
+        color: var(--red);
+      }
+
+      .btn.danger:hover {
+        background: var(--red-soft);
+        border-color: var(--red);
+      }
+
+      .btn.icon {
+        padding: 0;
+        width: 28px;
+        height: 28px;
+        flex: none;
+        font-size: 0.8rem;
+        font-weight: 400;
+        background: var(--surface);
+        border-color: var(--line);
+        color: var(--ink-2);
+      }
+
+      .btn.icon:hover {
+        background: var(--canvas);
+        border-color: var(--line-2);
+        color: var(--ink);
+      }
+
+      .btn.icon.remove:hover {
+        background: var(--red-soft);
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      .btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+        background: var(--surface);
+        border-color: var(--line);
+      }
+
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      /* ---------------------------------------------------------------
+         Liste des onglets
+      --------------------------------------------------------------- */
+      .team-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .team-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 9px 10px;
+        border-radius: var(--radius-sm);
+        border-left: 2px solid transparent;
+      }
+
+      .team-item:hover {
+        background: var(--canvas);
+      }
+
+      .team-item.active {
+        background: var(--navy-soft);
+        border-left-color: var(--navy);
+      }
+
+      .team-item .name {
+        flex: 1;
+        cursor: pointer;
+        font-size: 0.87rem;
+        font-weight: 500;
+      }
+
+      .team-item.active .name {
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      /* ---------------------------------------------------------------
+         Blocs, sous-lignes, cartes
+      --------------------------------------------------------------- */
+      .team-summary {
+        display: flex;
+        gap: 18px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        padding-bottom: 22px;
+        margin-bottom: 22px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .team-summary .portrait {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: var(--tint);
+        box-shadow: 0 0 0 1px var(--line-2);
+      }
+
+      .group {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 14px 16px 16px 16px;
+        margin-bottom: 14px;
+      }
+
+      .group-head {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .group-head .title-input {
+        flex: 1;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .sub-group {
+        margin-top: 12px;
+        padding-top: 12px;
+      }
+
+      .sub-group + .sub-group {
+        border-top: 1px solid var(--line);
+      }
+
+      .sub-group-head {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .sub-group-head .label-input {
+        flex: 1;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--teal);
+      }
+
+      .assignment {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        flex-wrap: wrap;
+      }
+
+      .assignment img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: var(--tint);
+        box-shadow: 0 0 0 1px var(--line-2);
+        flex: none;
+      }
+
+      .assignment .person-name {
+        width: 200px;
+        font-size: 0.87rem;
+        font-weight: 600;
+      }
+
+      .assignment .role-input {
+        flex: 1;
+        min-width: 170px;
+      }
+
+      /* Interrupteurs responsable / direction */
+      .toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--ink-3);
+        border: 1px solid var(--line);
+        border-radius: 50px;
+        padding: 5px 11px 5px 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        user-select: none;
+      }
+
+      .toggle input {
+        margin: 0;
+        accent-color: var(--navy);
+      }
+
+      .toggle.on {
+        color: var(--teal);
+        border-color: var(--teal);
+        background: var(--teal-soft);
+      }
+
+      .toggle.on input {
+        accent-color: var(--teal);
+      }
+
+      .toggle.founder.on {
+        color: var(--navy);
+        border-color: var(--navy);
+        background: var(--navy-soft);
+      }
+
+      /* Formulaire d'ajout */
+      .add-form {
+        display: flex;
+        gap: 10px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        padding: 12px 14px;
+        background: var(--canvas);
+        border: 1px dashed var(--line-2);
+        border-radius: var(--radius-sm);
+      }
+
+      .hint {
+        font-size: 0.76rem;
+        color: var(--ink-3);
+      }
+
+      /* ---------------------------------------------------------------
+         Table des personnes
+      --------------------------------------------------------------- */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th {
+        text-align: left;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-3);
+        border-bottom: 1px solid var(--line-2);
+        padding: 0 8px 10px 8px;
+      }
+
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 8px;
+        vertical-align: middle;
+      }
+
+      tbody tr:hover {
+        background: var(--canvas);
+      }
+
+      td img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: var(--tint);
+        box-shadow: 0 0 0 1px var(--line-2);
+        display: block;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--ink-2);
+        background: var(--canvas);
+        border: 1px solid var(--line);
+        border-radius: 50px;
+        padding: 2px 10px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .badge.zero {
+        color: var(--ink-3);
+        background: transparent;
+        border-style: dashed;
+      }
+
+      /* ---------------------------------------------------------------
+         Connexion
+      --------------------------------------------------------------- */
+      .login-wrapper {
+        max-width: 360px;
+        margin: 90px auto;
+      }
+
+      .login-wrapper .brand {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 26px;
+      }
+
+      .login-wrapper .brand img {
+        height: 30px;
+      }
+
+      .login-wrapper .panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 28px;
+      }
+
+      .login-wrapper .panel > h2 {
+        margin-bottom: 0;
+      }
+
+      .message {
+        border-radius: var(--radius-sm);
+        padding: 10px 12px;
+        font-size: 0.82rem;
+        background: var(--red-soft);
+        color: var(--red);
+        border: 1px solid #f2c9c3;
+      }
+
+      /* ---------------------------------------------------------------
+         Toast de statut
+      --------------------------------------------------------------- */
+      #status-bar {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 40;
+        display: none;
+        background: var(--ink);
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 10px 16px;
+        border-radius: 50px;
+        box-shadow: var(--shadow-lift);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <div id="status-bar"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="assets/supabase-config.js"></script>
+    <script src="assets/orga-store.js"></script>
+    <script>
+      const client = window.Orga.client;
+      const app = document.getElementById("app");
+      const statusBar = document.getElementById("status-bar");
+
+      const state = {
+        user: null,
+        tab: "structure",
+        teams: [],
+        people: [],
+        selectedTeamId: null,
+        loginError: null,
+        busy: false,
+      };
+
+      // ----------------------------------------------------------------
+      //  Petit helper de construction DOM
+      // ----------------------------------------------------------------
+      function h(tag, props, ...children) {
+        const node = document.createElement(tag);
+        Object.entries(props || {}).forEach(([key, value]) => {
+          if (value === null || value === undefined || value === false) return;
+          if (key === "class") node.className = value;
+          else if (key === "text") node.textContent = value;
+          else if (key === "value") node.value = value;
+          else if (key === "checked") node.checked = !!value;
+          else if (key.startsWith("on")) node.addEventListener(key.slice(2).toLowerCase(), value);
+          else node.setAttribute(key, value === true ? "" : value);
+        });
+        children.flat().forEach(child => {
+          if (child === null || child === undefined || child === false) return;
+          node.append(child.nodeType ? child : document.createTextNode(String(child)));
+        });
+        return node;
+      }
+
+      function setStatus(text) {
+        statusBar.textContent = text || "";
+        statusBar.style.display = text ? "block" : "none";
+      }
+
+      function slugify(value) {
+        return String(value)
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "");
+      }
+
+      // Enveloppe toute ecriture : statut, gestion d'erreur, rechargement
+      async function run(label, action) {
+        if (state.busy) return;
+        state.busy = true;
+        setStatus(label + "...");
+        try {
+          await action();
+          await loadData();
+          render();
+          setStatus("Enregistre");
+          setTimeout(() => setStatus(""), 1400);
+        } catch (error) {
+          console.error(error);
+          setStatus("");
+          window.alert("Erreur : " + (error.message || error));
+        } finally {
+          state.busy = false;
+        }
+      }
+
+      // ----------------------------------------------------------------
+      //  Chargement
+      // ----------------------------------------------------------------
+      async function loadData() {
+        const [teams, people] = await Promise.all([
+          window.Orga.loadTree(),
+          client.from("v_people_usage").select("*").order("full_name"),
+        ]);
+        if (people.error) throw people.error;
+        state.teams = teams;
+        state.people = people.data || [];
+        if (!state.teams.some(team => team.id === state.selectedTeamId)) {
+          state.selectedTeamId = state.teams.length ? state.teams[0].id : null;
+        }
+      }
+
+      // ----------------------------------------------------------------
+      //  Photos (Supabase Storage)
+      // ----------------------------------------------------------------
+      async function uploadPhoto(file, baseName) {
+        const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+        const key = `${slugify(baseName) || "photo"}-${Date.now()}.${ext}`;
+        const { error } = await client.storage
+          .from(window.Orga.bucket)
+          .upload(key, file, { contentType: file.type || "image/jpeg", upsert: true });
+        if (error) throw error;
+        return key;
+      }
+
+      async function removePhoto(path) {
+        if (!path || /^(https?:|data:)/.test(path)) return;
+        await client.storage.from(window.Orga.bucket).remove([path]);
+      }
+
+      function photoPicker(currentPath, baseName, onDone) {
+        const input = h("input", {
+          type: "file",
+          accept: "image/*",
+          style: "display:none",
+          onchange: event => {
+            const file = event.target.files[0];
+            if (!file) return;
+            run("Envoi de la photo", async () => {
+              const key = await uploadPhoto(file, baseName);
+              await onDone(key);
+              await removePhoto(currentPath);
+            });
+          },
+        });
+        return [
+          h(
+            "button",
+            { class: "btn secondary", onclick: () => input.click() },
+            currentPath ? "Changer la photo" : "Ajouter une photo",
+          ),
+          currentPath &&
+            h(
+              "button",
+              {
+                class: "btn icon remove",
+                title: "Retirer la photo",
+                onclick: () =>
+                  run("Suppression de la photo", async () => {
+                    await onDone(null);
+                    await removePhoto(currentPath);
+                  }),
+              },
+              "✕",
+            ),
+          input,
+        ];
+      }
+
+      // ----------------------------------------------------------------
+      //  Ecritures generiques
+      // ----------------------------------------------------------------
+      function throwIfError(result) {
+        if (result.error) throw result.error;
+        return result.data;
+      }
+
+      const update = (table, id, patch) => client.from(table).update(patch).eq("id", id).then(throwIfError);
+      const insert = (table, values) => client.from(table).insert(values).select().single().then(throwIfError);
+      const remove = (table, id) => client.from(table).delete().eq("id", id).then(throwIfError);
+
+      // Deplace un element dans sa liste puis renumerote tout le monde
+      async function reorder(table, items, index, delta) {
+        const target = index + delta;
+        if (target < 0 || target >= items.length) return;
+        const ordered = items.slice();
+        const [moved] = ordered.splice(index, 1);
+        ordered.splice(target, 0, moved);
+        for (let i = 0; i < ordered.length; i++) {
+          if (ordered[i].position !== i) await update(table, ordered[i].id, { position: i });
+        }
+      }
+
+      const nextPosition = items => (items.length ? Math.max(...items.map(i => i.position)) + 1 : 0);
+
+      function moveButtons(table, items, index, label) {
+        return [
+          h(
+            "button",
+            {
+              class: "btn icon",
+              title: "Monter",
+              disabled: index === 0,
+              onclick: () => run(label, () => reorder(table, items, index, -1)),
+            },
+            "↑",
+          ),
+          h(
+            "button",
+            {
+              class: "btn icon",
+              title: "Descendre",
+              disabled: index === items.length - 1,
+              onclick: () => run(label, () => reorder(table, items, index, 1)),
+            },
+            "↓",
+          ),
+        ];
+      }
+
+      function deleteButton(title, confirmText, action) {
+        return h(
+          "button",
+          {
+            class: "btn icon remove",
+            title,
+            onclick: () => {
+              if (!window.confirm(confirmText)) return;
+              run("Suppression", action);
+            },
+          },
+          "✕",
+        );
+      }
+
+      // ----------------------------------------------------------------
+      //  Interrupteur responsable / direction
+      // ----------------------------------------------------------------
+      function toggle(label, value, extraClass, onChange) {
+        const box = h("input", { type: "checkbox", checked: value, onchange: event => onChange(event.target.checked) });
+        return h("label", { class: `toggle ${extraClass}${value ? " on" : ""}` }, box, label);
+      }
+
+      // ----------------------------------------------------------------
+      //  Vue : connexion
+      // ----------------------------------------------------------------
+      function renderLogin() {
+        const email = h("input", { type: "email", placeholder: "prenom.nom@neoteem.fr", autocomplete: "username" });
+        const password = h("input", { type: "password", autocomplete: "current-password" });
+
+        const submit = async () => {
+          state.loginError = null;
+          setStatus("Connexion...");
+          const { error } = await client.auth.signInWithPassword({
+            email: email.value.trim(),
+            password: password.value,
+          });
+          setStatus("");
+          if (error) {
+            state.loginError = error.message;
+            render();
+          }
+        };
+
+        password.addEventListener("keydown", event => {
+          if (event.key === "Enter") submit();
+        });
+
+        app.replaceChildren(
+          h(
+            "div",
+            { class: "login-wrapper" },
+            h("div", { class: "brand" }, h("img", { src: "assets/logo-neoteem.jpg", alt: "Neoteem" })),
+            h(
+              "div",
+              { class: "panel" },
+              h("h2", { text: "Administration de l'organigramme" }),
+              state.loginError && h("div", { class: "message", text: state.loginError }),
+              h("label", { class: "field" }, "Email", email),
+              h("label", { class: "field" }, "Mot de passe", password),
+              h("button", { class: "btn", onclick: submit }, "Se connecter"),
+              h("a", { href: "index.html", class: "hint", style: "text-decoration:none" }, "Retour au trombinoscope"),
+            ),
+          ),
+        );
+      }
+
+      // ----------------------------------------------------------------
+      //  Vue : structure
+      // ----------------------------------------------------------------
+      function renderTeamList() {
+        const items = state.teams.map((team, index) =>
+          h(
+            "div",
+            { class: "team-item" + (team.id === state.selectedTeamId ? " active" : "") },
+            h("span", {
+              class: "name",
+              text: team.label,
+              onclick: () => {
+                state.selectedTeamId = team.id;
+                render();
+              },
+            }),
+            ...moveButtons("teams", state.teams, index, "Reordonnancement"),
+            deleteButton("Supprimer l'onglet", `Supprimer l'onglet "${team.label}" et tous ses blocs ?`, async () => {
+              await removePhoto(team.leader_photo_path);
+              await remove("teams", team.id);
+            }),
+          ),
+        );
+
+        const label = h("input", { type: "text", placeholder: "Nom de l'onglet" });
+        const add = () => {
+          const value = label.value.trim();
+          if (!value) return;
+          run("Creation de l'onglet", async () => {
+            let slug = slugify(value) || "onglet";
+            if (state.teams.some(team => team.slug === slug)) slug = `${slug}-${Date.now()}`;
+            const team = await insert("teams", { slug, label: value, position: nextPosition(state.teams) });
+            state.selectedTeamId = team.id;
+            label.value = "";
+          });
+        };
+
+        return h(
+          "div",
+          { class: "panel" },
+          h("h2", { text: `Onglets (${state.teams.length})` }),
+          h("div", { class: "team-list" }, items.length ? items : h("p", { class: "hint", text: "Aucun onglet." })),
+          h(
+            "div",
+            { class: "add-form" },
+            h("label", { class: "field", style: "flex:1" }, "Nouvel onglet", label),
+            h("button", { class: "btn", onclick: add }, "Ajouter"),
+          ),
+        );
+      }
+
+      function renderAssignment(subGroup, assignment, index) {
+        const person = assignment.person || {};
+        return h(
+          "div",
+          { class: "assignment" },
+          h("img", {
+            src: window.Orga.photoUrl(person.photo_path),
+            alt: person.full_name || "",
+            onerror: event => (event.target.src = window.Orga.AVATAR_PLACEHOLDER),
+          }),
+          h("span", { class: "person-name", text: person.full_name || "(inconnu)" }),
+          h("input", {
+            class: "role-input inline-input",
+            type: "text",
+            value: assignment.role || "",
+            placeholder: "Role affiche",
+            onchange: event =>
+              run("Mise a jour du role", () =>
+                update("assignments", assignment.id, { role: event.target.value.trim() }),
+              ),
+          }),
+          toggle("Responsable", assignment.is_manager, "", checked =>
+            run("Mise a jour de la carte", () => update("assignments", assignment.id, { is_manager: checked })),
+          ),
+          toggle("Direction", assignment.is_founder, "founder", checked =>
+            run("Mise a jour de la carte", () => update("assignments", assignment.id, { is_founder: checked })),
+          ),
+          ...moveButtons("assignments", subGroup.assignments, index, "Reordonnancement"),
+          h(
+            "button",
+            {
+              class: "btn icon remove",
+              title: "Retirer de cette sous-ligne",
+              onclick: () => run("Retrait de la carte", () => remove("assignments", assignment.id)),
+            },
+            "✕",
+          ),
+        );
+      }
+
+      function renderAddAssignment(subGroup) {
+        const listId = `people-${subGroup.id}`;
+        const name = h("input", { type: "text", placeholder: "Nom du collaborateur", list: listId });
+        const role = h("input", { type: "text", placeholder: "Role affiche" });
+        const datalist = h(
+          "datalist",
+          { id: listId },
+          state.people.map(person => h("option", { value: person.full_name })),
+        );
+
+        const add = () => {
+          const fullName = name.value.trim();
+          if (!fullName) return;
+          run("Ajout de la carte", async () => {
+            let person = state.people.find(p => p.full_name.toLowerCase() === fullName.toLowerCase());
+            if (!person) person = await insert("people", { full_name: fullName });
+            await insert("assignments", {
+              sub_group_id: subGroup.id,
+              person_id: person.id,
+              role: role.value.trim(),
+              position: nextPosition(subGroup.assignments),
+            });
+            name.value = "";
+            role.value = "";
+          });
+        };
+
+        return h(
+          "div",
+          { class: "add-form" },
+          datalist,
+          h("label", { class: "field" }, "Ajouter une personne", name),
+          h("label", { class: "field", style: "flex:1" }, "Role", role),
+          h("button", { class: "btn secondary", onclick: add }, "Ajouter"),
+          h("span", { class: "hint", text: "Un nom inconnu cree la fiche." }),
+        );
+      }
+
+      function renderSubGroup(group, subGroup, index) {
+        return h(
+          "div",
+          { class: "sub-group" },
+          h(
+            "div",
+            { class: "sub-group-head" },
+            h("input", {
+              class: "label-input inline-input",
+              type: "text",
+              value: subGroup.label || "",
+              placeholder: "Sans intitule (rangee simple)",
+              onchange: event =>
+                run("Mise a jour de la sous-ligne", () =>
+                  update("sub_groups", subGroup.id, { label: event.target.value.trim() || null }),
+                ),
+            }),
+            h("span", { class: "hint", text: subGroup.assignments.length }),
+            ...moveButtons("sub_groups", group.sub_groups, index, "Reordonnancement"),
+            deleteButton("Supprimer la sous-ligne", "Supprimer cette sous-ligne et ses cartes ?", () =>
+              remove("sub_groups", subGroup.id),
+            ),
+          ),
+          subGroup.assignments.map((assignment, i) => renderAssignment(subGroup, assignment, i)),
+          renderAddAssignment(subGroup),
+        );
+      }
+
+      function renderGroup(team, group, index) {
+        const addSubGroup = () =>
+          run("Creation de la sous-ligne", () =>
+            insert("sub_groups", { group_id: group.id, position: nextPosition(group.sub_groups) }),
+          );
+
+        return h(
+          "div",
+          { class: "group" },
+          h(
+            "div",
+            { class: "group-head" },
+            h("input", {
+              class: "title-input inline-input",
+              type: "text",
+              value: group.title || "",
+              placeholder: "Titre du bloc",
+              onchange: event =>
+                run("Mise a jour du bloc", () => update("groups", group.id, { title: event.target.value.trim() })),
+            }),
+            ...moveButtons("groups", team.groups, index, "Reordonnancement"),
+            deleteButton("Supprimer le bloc", `Supprimer le bloc "${group.title || "sans titre"}" et son contenu ?`, () =>
+              remove("groups", group.id),
+            ),
+          ),
+          group.sub_groups.map((subGroup, i) => renderSubGroup(group, subGroup, i)),
+          h(
+            "button",
+            { class: "btn secondary", style: "margin-top:12px", onclick: addSubGroup },
+            "Ajouter une sous-ligne",
+          ),
+        );
+      }
+
+      function renderTeamDetail() {
+        const team = state.teams.find(t => t.id === state.selectedTeamId);
+        if (!team) {
+          return h(
+            "div",
+            { class: "panel" },
+            h("p", { class: "hint", text: "Selectionnez un onglet, ou creez-en un." }),
+          );
+        }
+
+        const addGroup = () =>
+          run("Creation du bloc", () =>
+            insert("groups", { team_id: team.id, title: "", position: nextPosition(team.groups) }),
+          );
+
+        const total = team.groups.reduce(
+          (sum, group) => sum + group.sub_groups.reduce((n, sub) => n + sub.assignments.length, 0),
+          0,
+        );
+
+        return h(
+          "div",
+          { class: "panel" },
+          h("h2", { text: `${team.label} : ${total} collaborateur${total > 1 ? "s" : ""}` }),
+          h(
+            "div",
+            { class: "team-summary" },
+            h("img", {
+              class: "portrait",
+              src: window.Orga.photoUrl(team.leader_photo_path),
+              alt: team.leader_name || "",
+              onerror: event => (event.target.src = window.Orga.AVATAR_PLACEHOLDER),
+            }),
+            h(
+              "label",
+              { class: "field" },
+              "Libelle de l'onglet",
+              h("input", {
+                type: "text",
+                value: team.label,
+                onchange: event =>
+                  run("Mise a jour de l'onglet", () => update("teams", team.id, { label: event.target.value.trim() })),
+              }),
+            ),
+            h(
+              "label",
+              { class: "field" },
+              "Tete d'affiche",
+              h("input", {
+                type: "text",
+                value: team.leader_name || "",
+                placeholder: "Nom",
+                onchange: event =>
+                  run("Mise a jour de l'onglet", () =>
+                    update("teams", team.id, { leader_name: event.target.value.trim() || null }),
+                  ),
+              }),
+            ),
+            h(
+              "label",
+              { class: "field" },
+              "Fonction",
+              h("input", {
+                type: "text",
+                value: team.leader_role || "",
+                placeholder: "Fonction",
+                onchange: event =>
+                  run("Mise a jour de l'onglet", () =>
+                    update("teams", team.id, { leader_role: event.target.value.trim() || null }),
+                  ),
+              }),
+            ),
+            ...photoPicker(team.leader_photo_path, team.leader_name || team.label, key =>
+              update("teams", team.id, { leader_photo_path: key }),
+            ),
+          ),
+          team.groups.map((group, i) => renderGroup(team, group, i)),
+          h("button", { class: "btn", onclick: addGroup }, "Ajouter un bloc"),
+        );
+      }
+
+      // ----------------------------------------------------------------
+      //  Vue : personnes
+      // ----------------------------------------------------------------
+      function renderPeople() {
+        const rows = state.people.map(person =>
+          h(
+            "tr",
+            {},
+            h(
+              "td",
+              { style: "width:58px" },
+              h("img", {
+                src: window.Orga.photoUrl(person.photo_path),
+                alt: person.full_name,
+                onerror: event => (event.target.src = window.Orga.AVATAR_PLACEHOLDER),
+              }),
+            ),
+            h(
+              "td",
+              {},
+              h("input", {
+                class: "inline-input",
+                type: "text",
+                style: "width:100%;font-weight:600",
+                value: person.full_name,
+                onchange: event => {
+                  const value = event.target.value.trim();
+                  if (!value) return render();
+                  run("Renommage", () => update("people", person.id, { full_name: value }));
+                },
+              }),
+            ),
+            h(
+              "td",
+              { style: "width:110px" },
+              h("span", {
+                class: "badge" + (person.assignment_count ? "" : " zero"),
+                text: `${person.assignment_count} carte${person.assignment_count > 1 ? "s" : ""}`,
+              }),
+            ),
+            h(
+              "td",
+              { style: "width:1%;white-space:nowrap" },
+              h(
+              "div",
+              { class: "row", style: "justify-content:flex-end;flex-wrap:nowrap" },
+              ...photoPicker(person.photo_path, person.full_name, key =>
+                update("people", person.id, { photo_path: key }),
+              ),
+              h(
+                "button",
+                {
+                  class: "btn danger",
+                  onclick: () => {
+                    const warn = person.assignment_count
+                      ? `${person.full_name} apparait sur ${person.assignment_count} carte(s). Supprimer la fiche et ces cartes ?`
+                      : `Supprimer la fiche de ${person.full_name} ?`;
+                    if (!window.confirm(warn)) return;
+                    run("Suppression de la fiche", async () => {
+                      await removePhoto(person.photo_path);
+                      await remove("people", person.id);
+                    });
+                  },
+                },
+                "Supprimer",
+              ),
+              ),
+            ),
+          ),
+        );
+
+        const name = h("input", { type: "text", placeholder: "Prenom NOM" });
+        const file = h("input", { type: "file", accept: "image/*" });
+        const add = () => {
+          const value = name.value.trim();
+          if (!value) return;
+          run("Creation de la fiche", async () => {
+            const photo = file.files[0] ? await uploadPhoto(file.files[0], value) : null;
+            await insert("people", { full_name: value, photo_path: photo });
+            name.value = "";
+            file.value = "";
+          });
+        };
+
+        const withoutPhoto = state.people.filter(person => !person.photo_path).length;
+
+        return h(
+          "div",
+          { class: "panel" },
+          h("h2", { text: `Personnes (${state.people.length})` }),
+          h(
+            "table",
+            {},
+            h(
+              "thead",
+              {},
+              h(
+                "tr",
+                {},
+                h("th", { text: "Photo" }),
+                h("th", { text: "Nom" }),
+                h("th", { text: "Presence" }),
+                h("th", { text: "" }),
+              ),
+            ),
+            h("tbody", {}, rows),
+          ),
+          h(
+            "div",
+            { class: "add-form" },
+            h("label", { class: "field", style: "flex:1" }, "Nouvelle personne", name),
+            h("label", { class: "field" }, "Photo (optionnelle)", file),
+            h("button", { class: "btn", onclick: add }, "Creer la fiche"),
+          ),
+          h("p", {
+            class: "hint",
+            style: "margin-top:12px",
+            text: `Une personne peut apparaitre sur plusieurs cartes : sa photo est mutualisee. ${withoutPhoto} fiche(s) sans photo.`,
+          }),
+        );
+      }
+
+      // ----------------------------------------------------------------
+      //  Rendu principal
+      // ----------------------------------------------------------------
+      function render() {
+        if (!state.user) return renderLogin();
+
+        const tab = (id, label) =>
+          h(
+            "button",
+            {
+              type: "button",
+              class: state.tab === id ? "active" : "",
+              onclick: () => {
+                state.tab = id;
+                render();
+              },
+            },
+            label,
+          );
+
+        app.replaceChildren(
+          h(
+            "header",
+            { class: "topbar" },
+            h(
+              "a",
+              { class: "brand", href: "index.html" },
+              h("img", { src: "assets/logo-neoteem.jpg", alt: "Neoteem" }),
+            ),
+            h("h1", { text: "Administration" }),
+            h("span", { class: "spacer" }),
+            h("span", { class: "user-mail", text: state.user.email }),
+            h("a", { href: "index.html", target: "_blank" }, "Trombinoscope"),
+            h(
+              "a",
+              {
+                href: "#",
+                onclick: async event => {
+                  event.preventDefault();
+                  await client.auth.signOut();
+                },
+              },
+              "Deconnexion",
+            ),
+          ),
+          h("div", { class: "tabs" }, tab("structure", "Structure"), tab("people", "Personnes")),
+          h(
+            "main",
+            {},
+            state.tab === "structure"
+              ? h("div", { class: "layout" }, renderTeamList(), renderTeamDetail())
+              : renderPeople(),
+          ),
+        );
+      }
+
+      // ----------------------------------------------------------------
+      //  Amorcage
+      // ----------------------------------------------------------------
+      async function boot() {
+        const { data } = await client.auth.getSession();
+        state.user = data.session ? data.session.user : null;
+        if (state.user) {
+          try {
+            await loadData();
+          } catch (error) {
+            console.error(error);
+            window.alert("Chargement impossible : " + error.message);
+          }
+        }
+        render();
+      }
+
+      client.auth.onAuthStateChange(event => {
+        if (event === "SIGNED_IN" || event === "SIGNED_OUT") boot();
+      });
+
+      boot();
+    </script>
+  </body>
+</html>

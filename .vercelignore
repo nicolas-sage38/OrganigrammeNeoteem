@@ -1,0 +1,16 @@
+# Outils et sources : rien de tout ca n'est servi par le site
+scripts/
+db/
+.claude/
+.vscode/
+README.md
+
+# Les photos des collaborateurs vivent dans Supabase Storage.
+# Les fichiers a la racine ne sont qu'une archive locale.
+# Le logo servi par les pages est dans assets/, qui reste inclus.
+/*.jpg
+/*.jpeg
+/*.png
+/*.JPG
+/*.JPEG
+/*.PNG

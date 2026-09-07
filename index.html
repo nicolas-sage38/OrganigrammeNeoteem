@@ -1,802 +1,731 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Organigramme V5 - Lignes d'équipes</title>
+    <title>Organigramme Neoteem</title>
     <style>
       :root {
-        --primary: #2c3e50;
-        --accent: #3498db;
-        --bg: #ecf0f1;
-        /* Couleurs Spécifiques Manager */
-        --mgr-bg: #e8f6f3;
-        /* Vert/Bleu très pâle */
-        --mgr-border: #1abc9c;
-        --mgr-text: #16a085;
-        /* --- NOUVEAU : COULEURS DU DÉGRADÉ --- */
-        /* J'ai mis des valeurs approximatives basées sur le logo précédent (Teal vers Violet/Rouge) */
-        /* Changez-les ici pour coller exactement à votre charte */
-        --grad-start: #013677;
-        --grad-end: #00a998;
+        /* Marque */
+        --navy: #013677;
+        --teal: #00a998;
+
+        /* Neutres */
+        --ink: #0f1b2d;
+        --ink-2: #56616f;
+        --ink-3: #8b95a2;
+        --line: #e5e8ec;
+        --line-2: #d4d9e0;
+        --surface: #ffffff;
+        --canvas: #f6f7f9;
+        --tint: #f2f6fa;
+
+        --radius: 14px;
+        --radius-sm: 10px;
+        --shadow: 0 1px 2px rgba(15, 27, 45, 0.04);
+        --shadow-lift: 0 6px 18px rgba(15, 27, 45, 0.08);
+
+        --font:
+          "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial,
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg);
         margin: 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: 15px;
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
       }
 
-      /* Navigation */
-      nav {
-        margin-bottom: 20px;
-        display: flex;
-        gap: 15px;
-        z-index: 10;
-        flex-wrap: wrap;
-        justify-content: center;
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
       }
 
-      button {
-        padding: 10px 20px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        background: white;
-        color: var(--primary);
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        font-weight: bold;
-      }
-
-      button.active {
-        background: var(--accent);
-        color: white;
-        transform: scale(1.05);
-      }
-
-      /* Zone Principale */
-      #display-area {
-        width: 95%;
-        height: 85vh;
-        background: transparent;
-        /* Fond transparent pour laisser voir les blocs */
-        border-radius: 20px;
-        padding: 10px;
-        box-sizing: border-box;
-        overflow-y: auto;
-        scroll-behavior: smooth;
-      }
-
-      /* Header du Grand Dirigeant (en haut) */
-      .leader-header {
-        background: white;
-        padding: 20px;
-        border-radius: 20px;
-        text-align: center;
-        margin-bottom: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      /* ---------------------------------------------------------------
+         Barre superieure
+      --------------------------------------------------------------- */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
         display: flex;
         align-items: center;
-        justify-content: center;
         gap: 20px;
-        animation: slideDown 0.5s ease;
+        padding: 0 28px;
+        height: 64px;
       }
 
-      /* --- NOUVEAU STYLE DÉGRADÉ POUR LE DIRIGEANT --- */
-
-      /* Le conteneur qui fait l'anneau dégradé */
-      .leader-img-wrapper {
-        width: 160px;
-        /* Taille globale */
-        height: 160px;
-        border-radius: 50%;
-        /* C'est ici que la magie du dégradé opère */
-        background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
-        padding: 6px;
-        /* Épaisseur de la bordure dégradée */
-
-        /* Animation */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        cursor: pointer;
-        /* Important pour que l'image reste ronde dedans */
-        overflow: hidden;
+      .brand {
         display: flex;
         align-items: center;
-        justify-content: center;
       }
 
-      /* L'image elle-même à l'intérieur de l'anneau */
-      .leader-header img {
-        width: 100%;
-        height: 100%;
+      .brand img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+
+      .topbar h1 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        padding-left: 20px;
+        border-left: 1px solid var(--line);
+        color: var(--ink);
+      }
+
+      .topbar .spacer {
+        flex: 1;
+      }
+
+      .search {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search input {
+        font-family: inherit;
+        font-size: 0.85rem;
+        color: var(--ink);
+        background: var(--canvas);
+        border: 1px solid var(--line);
+        border-radius: 50px;
+        padding: 8px 16px 8px 36px;
+        width: 260px;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease,
+          width 0.15s ease;
+      }
+
+      .search input::placeholder {
+        color: var(--ink-3);
+      }
+
+      .search input:focus {
+        outline: none;
+        background: var(--surface);
+        border-color: var(--navy);
+        width: 300px;
+      }
+
+      .search svg {
+        position: absolute;
+        left: 13px;
+        width: 14px;
+        height: 14px;
+        stroke: var(--ink-3);
+        fill: none;
+        stroke-width: 2;
+        pointer-events: none;
+      }
+
+      .admin-link {
+        font-size: 0.8rem;
+        color: var(--ink-3);
+        text-decoration: none;
+        padding: 6px 0;
+        border-bottom: 1px solid transparent;
+        transition: color 0.15s ease;
+      }
+
+      .admin-link:hover {
+        color: var(--navy);
+        border-bottom-color: var(--line-2);
+      }
+
+      /* ---------------------------------------------------------------
+         Onglets
+      --------------------------------------------------------------- */
+      .tabs {
+        position: sticky;
+        top: 64px;
+        z-index: 19;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 4px;
+        padding: 0 28px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tabs button {
+        position: relative;
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink-2);
+        padding: 14px 14px 13px 14px;
+        cursor: pointer;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+        transition:
+          color 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .tabs button:hover {
+        color: var(--ink);
+      }
+
+      .tabs button.active {
+        color: var(--navy);
+        font-weight: 600;
+        border-bottom-color: var(--navy);
+      }
+
+      /* ---------------------------------------------------------------
+         Contenu
+      --------------------------------------------------------------- */
+      main {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 28px 28px 80px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .eyebrow {
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--teal);
+      }
+
+      /* Tete d'onglet */
+      .team-head {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px 26px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .team-head .portrait {
+        width: 84px;
+        height: 84px;
         border-radius: 50%;
         object-fit: cover;
-        /* Un petit bord blanc fin pour séparer l'image du dégradé pour faire propre */
-        border: 3px solid white;
-        background-color: white;
-        box-sizing: border-box;
+        background: var(--tint);
+        box-shadow: 0 0 0 1px var(--line-2);
+        flex: none;
       }
 
-      /* L'effet de zoom au survol s'applique maintenant au wrapper */
-      .leader-img-wrapper:hover {
-        transform: scale(1.2) rotate(2deg);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        z-index: 10;
+      .team-head h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-top: 3px;
       }
 
-      .leader-info h1 {
-        margin: 0;
-        font-size: 1.8rem;
-        color: var(--primary);
+      .team-head .role {
+        font-size: 0.88rem;
+        color: var(--ink-2);
       }
 
-      .leader-info p {
-        margin: 5px 0 0 0;
-        color: #7f8c8d;
-        font-size: 1.1rem;
+      .team-head .count {
+        margin-left: auto;
+        text-align: right;
+        font-size: 0.78rem;
+        color: var(--ink-3);
+        line-height: 1.3;
       }
 
-      /* --- LE BLOC ÉQUIPE (LA LIGNE) --- */
-      .team-row-container {
-        background: white;
-        border-radius: 15px;
-        padding: 20px 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        animation: fadeIn 0.8s ease;
-        border-left: 6px solid var(--accent);
-        /* Barre de couleur à gauche */
+      .team-head .count strong {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--ink);
       }
 
-      /* --- NOUVEAU : GESTION DES SOUS-LIGNES --- */
-      .sub-line {
+      /* Bloc */
+      .block {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px 26px 24px 26px;
+      }
+
+      .block-head {
         display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        align-items: flex-start;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-        border-bottom: 1px dashed #e0e0e0;
-        justify-content: center;
-        /* Petit séparateur discret */
+        align-items: baseline;
+        gap: 10px;
+        padding-bottom: 14px;
+        margin-bottom: 6px;
+        border-bottom: 1px solid var(--line);
       }
 
-      /* Enlever la bordure du dernier sous-groupe pour faire propre */
-      .sub-line:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-
-      /* Petit titre optionnel pour la sous-ligne (ex: "Terrain") */
-      .sub-line-label {
-        width: 100%;
-        /* Prend toute la largeur pour être au dessus */
-        font-size: 1.3rem;
-        color: #00a998;
+      .block-head h3 {
+        font-size: 0.8rem;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-        font-weight: bold;
+        letter-spacing: 0.09em;
+        color: var(--ink);
       }
 
-      .row-title {
-        font-size: 1.3rem;
-        color: var(--primary);
-        margin-bottom: 20px;
-        font-weight: bold;
+      .block-head .tally {
+        font-size: 0.72rem;
+        color: var(--ink-3);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Sous-ligne */
+      .subline + .subline {
+        border-top: 1px solid var(--line);
+      }
+
+      .subline-label {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
+        font-size: 0.72rem;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
+        letter-spacing: 0.09em;
+        color: var(--ink-2);
+        padding: 18px 0 2px 0;
       }
 
-      /* Conteneur flexible pour les cartes */
-      .cards-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        /* Permet de passer à la ligne si trop nombreux */
-        gap: 30px;
-        /* Espace entre les cartes */
-        align-items: flex-start;
+      .subline-label::before {
+        content: "";
+        width: 14px;
+        height: 2px;
+        background: var(--teal);
+        flex: none;
+      }
+
+      /* Grille de cartes */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+        gap: 4px;
+        padding: 12px 0 0 0;
+      }
+
+      .cards.centered {
+        grid-template-columns: repeat(auto-fit, minmax(210px, 240px));
         justify-content: center;
+        gap: 12px;
+        padding-top: 18px;
       }
 
-      /* --- LA TUILE (CARD) --- */
-      .card-container {
-        position: relative;
-        z-index: 1;
-        transition: all 0.3s ease;
-        width: 140px;
-        /* Largeur fixe pour alignement propre */
-      }
-
-      .card {
-        background: #f8f9fa;
-        border-radius: 10px;
-        padding: 15px 10px;
-        text-align: center;
+      /* Carte */
+      .person {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100%;
-        border: 1px solid #eee;
+        text-align: center;
+        gap: 2px;
+        padding: 16px 10px 14px 10px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-sm);
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
       }
 
-      /* STYLE SPÉCIAL MANAGER */
-      .card.is-manager {
-        background-color: var(--mgr-bg);
-        border: 2px solid var(--mgr-border);
+      .person:hover {
+        background: var(--surface);
+        border-color: var(--line);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lift);
       }
 
-      .card.is-manager h3 {
-        color: var(--mgr-text) !important;
-      }
-
-      /* ZOOM AU SURVOL */
-      .card-container:hover {
-        transform: scale(1.2) translateY(-10px);
-        z-index: 100;
-      }
-
-      .card-container:hover .card {
-        background: white;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .card img {
-        width: 80px;
-        height: 80px;
+      .person img {
+        width: 74px;
+        height: 74px;
         border-radius: 50%;
         object-fit: cover;
+        background: var(--tint);
+        box-shadow: 0 0 0 1px var(--line-2);
         margin-bottom: 10px;
-        background-color: #ddd;
-        border: 3px solid white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
-      .card h3 {
-        margin: 5px 0;
-        font-size: 0.95rem;
-        color: var(--primary);
-        word-wrap: break-word;
+      .person .name {
+        font-size: 0.84rem;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -0.005em;
       }
 
-      .card span {
-        font-size: 0.8rem;
-        color: #666;
-        font-style: italic;
+      .person .role {
+        font-size: 0.74rem;
+        color: var(--ink-3);
+        line-height: 1.35;
       }
 
-      /* --- STYLE VIP : FONDATEURS --- */
-
-      /* 1. On agrandit le conteneur (220px au lieu de 140px standard) */
-      .card-container.founder-container {
-        width: 380px;
+      /* Responsable : anneau teal, pas de pave de couleur */
+      .person.is-manager img {
+        box-shadow:
+          0 0 0 2px var(--teal),
+          0 0 0 4px var(--surface);
       }
 
-      /* 2. Le style de la carte (Bordure Dorée + Fond Crème) */
-      .card.is-founder {
-        background: linear-gradient(to bottom, #fff, #fffbf0); /* Dégradé subtil */
-        border: 3px solid #e53758; /* OR / GOLD */
-        box-shadow: 0 10px 20px rgba(241, 196, 15, 0.2);
+      .person.is-manager .role {
+        color: var(--teal);
+        font-weight: 600;
       }
 
-      /* 3. On agrandit la photo (130px au lieu de 80px) */
-      .card.is-founder img {
-        width: 250px;
-        height: 250px;
-        border: 4px solid white;
+      /* Direction : carte plus large, anneau navy */
+      .person.is-founder {
+        padding: 26px 18px 22px 18px;
+        border-color: var(--line);
+        background: var(--surface);
       }
 
-      /* 4. On agrandit le texte */
-      .card.is-founder h3 {
-        font-size: 1.3rem;
-        color: #e53758; /* Texte couleur brique/or foncé */
-        font-weight: bold;
-        margin-top: 25px;
+      .person.is-founder img {
+        width: 124px;
+        height: 124px;
+        margin-bottom: 16px;
+        box-shadow:
+          0 0 0 2px var(--navy),
+          0 0 0 4px var(--surface);
       }
-      .card.is-founder span {
+
+      .person.is-founder .name {
         font-size: 1rem;
-        color: #7f8c8d;
-        font-weight: bold;
       }
 
-      /* Effet de survol encore plus impressionnant pour les fondateurs */
-      .card-container.founder-container:hover {
-        transform: scale(1.2) translateY(-15px); /* Un peu moins de scale car déjà gros */
+      .person.is-founder .role {
+        font-size: 0.8rem;
+        color: var(--ink-2);
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      /* ---------------------------------------------------------------
+         Etats
+      --------------------------------------------------------------- */
+      .state {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 40px 30px;
+        text-align: center;
       }
 
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
+      .state h2 {
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .state p {
+        margin-top: 6px;
+        font-size: 0.85rem;
+        color: var(--ink-3);
+      }
+
+      .state.error {
+        border-left: 3px solid #c0392b;
+        text-align: left;
+      }
+
+      .state.error h2 {
+        color: #c0392b;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      /* Pendant une recherche, les compteurs de section ne veulent plus rien dire */
+      main.filtering .tally {
+        display: none;
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          height: auto;
+          padding: 12px 18px;
+          flex-wrap: wrap;
+          gap: 12px;
         }
 
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .topbar h1 {
+          padding-left: 0;
+          border-left: none;
+        }
+
+        .tabs {
+          position: static;
+          padding: 0 18px;
+        }
+
+        /* Le titre et le lien admin restent sur la premiere ligne,
+           la recherche prend toute la seconde */
+        .topbar .spacer {
+          display: none;
+        }
+
+        .admin-link {
+          order: 2;
+          margin-left: auto;
+        }
+
+        .search {
+          order: 3;
+          flex: 1 0 100%;
+        }
+
+        .search input,
+        .search input:focus {
+          width: 100%;
+        }
+
+        main {
+          padding: 18px 18px 60px 18px;
+        }
+
+        .block {
+          padding: 18px 16px;
+        }
+
+        .team-head {
+          padding: 18px;
+          gap: 16px;
+        }
+
+        .team-head .count {
+          display: none;
         }
       }
     </style>
   </head>
 
   <body>
-    <nav id="nav-buttons"></nav>
-    <div id="display-area"></div>
+    <header class="topbar">
+      <a class="brand" href="index.html"><img src="assets/logo-neoteem.jpg" alt="Neoteem" /></a>
+      <h1>Organigramme</h1>
+      <span class="spacer"></span>
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-4.3-4.3" />
+        </svg>
+        <input id="search" type="search" placeholder="Rechercher un nom, un role" autocomplete="off" />
+      </label>
+      <a class="admin-link" href="admin.html">Administration</a>
+    </header>
 
+    <nav class="tabs" id="tabs"></nav>
+
+    <main id="content">
+      <div class="state"><h2>Chargement de l'organigramme</h2></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="assets/supabase-config.js"></script>
+    <script src="assets/orga-store.js"></script>
     <script>
-      // --- CONFIGURATION DES DONNÉES ---
-      // ASTUCE : Pour que le manager soit à gauche, mets-le en PREMIER dans la liste 'members'
+      // Les donnees viennent integralement de Supabase (voir db/schema.sql).
+      // Toute modification se fait depuis admin.html.
+      const tabsEl = document.getElementById("tabs");
+      const contentEl = document.getElementById("content");
+      const searchEl = document.getElementById("search");
 
-      const data = [
-        {
-          id: 0,
-          teamLabel: "Fondateurs",
-          leader: { name: "Neoteem", role: "Fondateurs", img: "logo-Neoteem_icono.jpg" },
-          rows: [
-            // LIGNE 1 : Fondateur A
-            {
-              title: "",
-              members: [
-                // Seul sur sa ligne, avec le style Manager (Bleu)
-                { name: "Yves TREVISIOL", role: "Président", img: "Yves Trevisiol.jpg", isFounder: true },
-                { name: "Jean-Louis MANGANI", role: "Directeur Commercial", img: "JLM.jpg", isFounder: true },
-                {
-                  name: "Philippe THUET",
-                  role: "Directeur Produit & Opérations",
-                  img: "Philippe THUET.jpg",
-                  isFounder: true,
-                },
-              ],
-            },
-            /*
-                    ,
-                    // LIGNE 2 : Fondateur B
-                    {
-                        title: "Direction Commerciale",
-                        members: [
-                            { name: "Jean-Louis MANGANI", role: "Directeur Commercial", img: "Jean-Louis MANGANI.jpg", isManager: true }
-                        ]
-                    },
-                    // LIGNE 3 : Fondateur C
-                    {
-                        title: "Direction Produit",
-                        members: [
-                            { name: "Philippe THUET", role: "Diecteur Produit & Opérations", img: "Philippe THUET.jpg", isManager: true }
-                        ]
-                    }*/
-          ],
-        },
-        // --- EXEMPLE FINANCE ---
-        {
-          id: 1,
-          teamLabel: "Migration & IT",
-          leader: { name: "Benjamin MANGANI", role: "Directeur Général", img: "Benjamin Mangani.png" },
-          rows: [
-            {
-              title: "Consultants Migration",
-              members: [
-                {
-                  name: "Gaylord MARCHAND",
-                  role: "Reponsable Consultants Migration",
-                  img: "Gaylord Marchand.jpg",
-                  isManager: true,
-                },
-                { name: "Marion QUESNE", role: "Consultante", img: "Marion Quesne.jpg" },
-                { name: "Sylvie MONOD", role: "Consultante", img: "Sylvie MONOD.jpg" },
-                { name: "Laurent JACQUON", role: "Consultant", img: "Laurent Jacquon.jpg" },
-                { name: "Asiya BOUKERSI", role: "Consultante", img: "Asiya Boukersi.jpeg" },
-                { name: "Thomas LECOUTRE", role: "Consultant", img: "Thomas Lecoutre et Maïa.jpg" },
-              ],
-            },
-            {
-              title: "Développeurs Migration",
-              members: [
-                {
-                  name: "David BEAUFOUR",
-                  role: "Reponsable Développeurs Migration",
-                  img: "David BEAUFOUR.jpg",
-                  isManager: true,
-                },
-                { name: "Johann LOTZ", role: "Développeur", img: "Johann LOTZ.jpg" },
-                { name: "Yann COMMEROT", role: "Développeur", img: "Yann Commerot.jpg" },
-                { name: "David MIQUEL", role: "Développeur", img: "David MIQUEL.jpg" },
-                { name: "Pauline ALLEMAND", role: "Développeur", img: "Pauline Allemand.JPEG" },
-                { name: "Denis SALLE", role: "Développeur", img: "Denis Salle.png" },
-                { name: "Alexandre PERREIN", role: "Développeur", img: "Alexandre PERREIN.PNG" },
-              ],
-            },
-            {
-              title: "Infrastructure",
-              members: [
-                { name: "Rémy MARION", role: "Responsable Infrastructure", img: "Rémy MARION.jpeg", isManager: true },
-                { name: "Fabien PINGRET", role: "Administrateur Systèmes & Réseaux", img: "Fabien Pingret.jpg" },
-              ],
-            },
-            {
-              title: "Ilot Technique",
-              members: [
-                { name: "Jean HOFNUNG", role: "Reponsable Architecture", img: "Jean Hofnung.png" },
-                { name: "Tifanny SERAFIN", role: "Dev WWW", img: "tifanny-serafin.png" },
-                { name: "Trang NGUYEN", role: "Dev BDD", img: "Trang.jpeg" },
-              ],
-            },
-          ],
-        },
-        // --- EXEMPLE GROSSE ÉQUIPE (50 pers) ---
-        {
-          id: 2,
-          teamLabel: "Produits & Opérations",
-          leader: { name: "Nils TREVISIOL", role: "Directeur Général", img: "Nils Trevisiol.png" },
-          rows: [
-            {
-              title: "UX Design",
-              members: [{ name: "Matthieu CHEMIN", role: "UX Designer", img: "Matthieu_Chemin.jpg" }],
-            },
-            {
-              title: "Ilot Syndic",
+      let teams = [];
 
-              subLines: [
-                {
-                  // label: "Produit",
-                  members: [
-                    // François est manager (tuile bleue)
-                    {
-                      name: "Alexandre HALARY",
-                      role: "Directeur Produit & Qualité",
-                      img: "Alexandre Halary.jpg",
-                      isManager: true,
-                    },
-                  ],
-                },
-                {
-                  label: "Service Qualité",
-                  members: [
-                    {
-                      name: "Alexandre HALARY",
-                      role: "Reponsable Qualité",
-                      img: "Alexandre Halary.jpg",
-                      isManager: true,
-                    },
-                    { name: "Marion GARET", role: "Qualité", img: "Marion Garet.png" },
-                    { name: "Lionel PEIRANO", role: "Qualité", img: "Lionel Peirano.png" },
-                    { name: "Philippe LAROPPE", role: "Qualité", img: "Philippe Laroppe.jpg" },
-                    { name: "David COSTANZA", role: "Qualité", img: "David Costanza.jpeg" },
-                    { name: "Caroline NAUDET", role: "Qualité", img: "Caroline Naudet.jpg" },
-                    { name: "Charlotte HATTON", role: "Qualité", img: "Charlotte Hatton.jpg" },
-                  ],
-                },
-                {
-                  label: "Ilot Syndic",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    { name: "Tom GAJDA", role: "PO", img: "Tom GAJDA.jpg", isManager: true },
-                    { name: "Nicolas SAGE", role: "Dev WWW", img: "Nico Sage.jpg" },
-                    { name: "Matthias FAUCON", role: "Dev WWW", img: "Matthias FAUCON.jpeg" },
-                    { name: "Jimmy FRANCOIS", role: "Dev BDD", img: "François Jimmy.jpeg" },
-                    { name: "Osca BRAUN", role: "Dev BDD", img: "Oscar Braun.jpg" },
-                  ],
-                },
-              ],
-            },
-
-            {
-              title: "Ilot Gérance Propriétaire",
-              members: [
-                { name: "Rémy GIGAUT", role: "PO", img: "Rémy Gigaut Heineken.jpg", isManager: true },
-                { name: "Denis THEVENOT", role: "Dev WWW", img: "Denis THEVENOT.jpeg" },
-                { name: "Jérémy FRAISSENET", role: "Dev Full Stack", img: "Jérémy Fraissenet.jpg" },
-                { name: "Jérôme ARRIGHI", role: "Dev IA", img: "Jérome ARRIGHI.jpg" },
-                { name: "Loïc TRONET", role: "Dev BDD", img: "LOïc TRONET.jpg" },
-                { name: "Noam LEMAITRE", role: "Dev BDD", img: "noam 5.jpeg" },
-                { name: "Jérémy KHAMDY", role: "Dev WWW", img: "Jérémy Khamdy.jpeg" },
-                { name: "Raphael PICARD", role: "Dev IA", img: "Raphael PICARD.jpeg" },
-              ],
-            },
-
-            {
-              title: "Ilot Gérance Locataire",
-              members: [
-                { name: "Marie-Laure CANNILLO ", role: "PO", img: "Marie-Laure Cannillo.jpg", isManager: true },
-                {
-                  name: "Thibaud FERNANDEZ",
-                  role: "Dev WWW",
-                  img: "Thibaud Fernandez et sa supportrice numéro 1 LANA.jpg",
-                },
-                { name: "Rowin BOISSIN", role: "Dev WWW", img: "Rowin Boissin.png" },
-                { name: "Bastien STAGNOLI", role: "Dev BDD", img: "Bastien_Stagnoli.jpg" },
-                { name: "Gwendal BOLLE", role: "Dev BDD", img: "Gwendal Bolle.png" },
-                { name: "Zinedine SAYAD", role: "Dev BDD", img: "sayadZinedine.jpg" },
-              ],
-            },
-            {
-              title: "Parcours Client",
-
-              subLines: [
-                {
-                  // label: "Produit",
-                  members: [
-                    // François est manager (tuile bleue)
-                    {
-                      name: "Narjis TREVISIOL",
-                      role: "Directrice des Opérations",
-                      img: "Narjis Trevisiol.jpg",
-                      isManager: true,
-                    },
-                  ],
-                },
-                {
-                  title: "E-Learning",
-                  members: [{ name: "Mehdi-Julien FOUDIL", role: "E-Learning", img: "Mehdi-Julien_Foudil.jpeg" }],
-                },
-                {
-                  label: "Administratif",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    {
-                      name: "Marie CARRAT",
-                      role: "Responsable Adminsitrative",
-                      img: "Marie CARRAT.jpg",
-                      isManager: true,
-                    },
-                    { name: "Yannick MONIEZ", role: "Administratif", img: "Yannick Moniez.jpg" },
-                  ],
-                },
-                {
-                  label: "Formation Syndic",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    {
-                      name: "Aurélien REIX",
-                      role: "Responsable Formation",
-                      img: "Aurélien et Raphael REIX.jpg",
-                      isManager: true,
-                    },
-                    { name: "Stéphane COMTE", role: "Consultant Formateur", img: "Stephane Comte.jpg" },
-                    { name: "Louis HUGHES", role: "Consultant Formateur", img: "Louis Hughes.jpg" },
-                    { name: "Famara SANE", role: "Consultant Formateur", img: "Famara.jpg" },
-                    { name: "Marion ROCHOIR", role: "Consultante Formatrice", img: "Marion ROCHOIR.jpg" },
-                  ],
-                },
-                {
-                  label: "Formation Gérance",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    { name: "Yanis AZAG", role: "Responsable Formation", img: "Yanis Azag.jpg", isManager: true },
-                    { name: "Marc TRARIEUX", role: "Consultant Formateur", img: "Marc Trarieux.jpg" },
-                    { name: "Aziz DJOUMAD", role: "Consultant Formateur", img: "Aziz DJOUMAD.jpg" },
-                    { name: "Matthieu LESIEUR", role: "Consultant Formateur", img: "Mathieu LESIEUR.jpeg" },
-                    { name: "Charlotte LEON", role: "Consultante Formatrice", img: "Charlotte LEON.jpg" },
-                    { name: "Valérie ZANY", role: "Consultante Formatrice", img: "Valérie ZANI.jpg" },
-                  ],
-                },
-                {
-                  label: "Assistance Au Démarrage",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    {
-                      name: "Alexandra DEAUCOURT",
-                      role: "Responsable Assistance Au Démarrage",
-                      img: "Alexandra Deaucourt.jpg",
-                      isManager: true,
-                    },
-                  ],
-                },
-                {
-                  label: "Support Syndic",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    {
-                      name: "Alexandra DUARTE",
-                      role: "Responsable Support Gérance",
-                      img: "Duarte Alexandra.jpg",
-                      isManager: true,
-                    },
-                    { name: "Nathalie PINARD", role: "Support", img: "Nathalie PINARD.jpg" },
-                    { name: "Fabrice MAGNAN DE BELLEVUE", role: "Support", img: "Fabrice Magan de Bellevue.jpg" },
-                    { name: "Audrey BOUSSIERE", role: "Support", img: "Audrey BOUSSIERES.png" },
-                    {
-                      name: "Jean-Marc SOLER",
-                      role: "Support",
-                      img: "Jean-Marc Soler a la recherche de l_erreurv 224.jpg",
-                    },
-                    { name: "Laura EDOUARD", role: "Support", img: "Laura EDOUARD.jpeg" },
-                    { name: "Sonia FOUQUET", role: "Support", img: "Sonia Fouquet.jpg" },
-                  ],
-                },
-                {
-                  label: "Support Gérance",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    {
-                      name: "Anne DUPUIS",
-                      role: "Responsable Support Gérance",
-                      img: "Anne Dupuy.jpeg",
-                      isManager: true,
-                    },
-                    { name: "Sylvie ANDRE", role: "Support", img: "Sylvie ANDRE.PNG" },
-                    { name: "Nadège DUPONCHEL", role: "Support", img: "Nadege Duponchel.jpg" },
-                    { name: "Christine GALASSO", role: "Support", img: "Christine Galasso.jpg" },
-                  ],
-                },
-                {
-                  label: "Expérience Clients",
-                  members: [
-                    // Ludo est manager aussi (tuile bleue)
-                    {
-                      name: "Marianne CLASTOT",
-                      role: "Responsable Expérience Clients",
-                      img: "Marianne Clastot.jpg",
-                      isManager: true,
-                    },
-                    { name: "Valéry MARTYROSYAN", role: "Support", img: "Valery Martyrosyan.jpeg" },
-                    { name: "Margaux BELLOUBET", role: "Support", img: "Margaux Belloubet.png" },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 3,
-          teamLabel: "Commerce - Comptabilité - RH",
-          leader: { name: "Romain TREVISIOL", role: "Président", img: "Romain TREVISIOL.jpeg" },
-          // Chaque objet ici crée un gros bloc blanc (une ligne)
-          rows: [
-            {
-              title: "Comptabilité & RH",
-              members: [
-                // Ghislaine (Manager) en premier + isManager: true
-                { name: "Ghislaine", role: "DAF", img: "Ghislaine Brunet.jpg", isManager: true },
-                // Ingrid sur la même ligne
-                { name: "Ingrid RODRIGUEZ", role: "Comptable", img: "Ingrid Rodriguez.png" },
-              ],
-            },
-            {
-              title: "Équipe Commerciale",
-              members: [
-                // Ludovic sur la même ligne
-                { name: "Yves TREVISIOL", role: "Commercial", img: "Yves Trevisiol.jpg" },
-                // François (Manager) en premier
-                { name: "François HENRY", role: "Avant-Vente", img: "Francois HENRY.jpg" },
-                // Ludovic sur la même ligne
-                { name: "Ludovic LAMIAUD", role: "Commercial", img: "Ludovic LAMIAUD.png" },
-              ],
-            },
-            {
-              title: "Equipe Projet",
-              members: [
-                // Véronique seule sur sa ligne
-                { name: "Véronique DAUDET", role: "Chef de projet", img: "Véronique Daudet.jpg" },
-              ],
-            },
-          ],
-        },
-      ];
-
-      // Petit générateur pour l'exemple (ignore cette partie)
-      function generateFakeMembers(count, managerName, hasManager) {
-        let arr = [];
-        if (hasManager) {
-          // On ajoute le chef en premier
-          arr.push({ name: managerName, role: "MANAGER", img: "default.jpg", isManager: true });
-        }
-        for (let i = 1; i <= count; i++) {
-          arr.push({ name: `Collab ${i}`, role: "Staff", img: "default.jpg" });
-        }
-        return arr;
+      function escapeHtml(value) {
+        return String(value ?? "").replace(
+          /[&<>"']/g,
+          char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char],
+        );
       }
 
-      // --- MOTEUR D'AFFICHAGE ---
-      const navContainer = document.getElementById("nav-buttons");
-      const displayArea = document.getElementById("display-area");
+      function countPeople(team) {
+        return team.groups.reduce(
+          (total, group) => total + group.sub_groups.reduce((sum, sub) => sum + sub.assignments.length, 0),
+          0,
+        );
+      }
 
-      function init() {
-        navContainer.innerHTML = "";
-        data.forEach((team, index) => {
-          const btn = document.createElement("button");
-          btn.innerText = team.teamLabel;
-          btn.onclick = () => showTeam(index);
-          if (index === 0) btn.classList.add("active");
-          navContainer.appendChild(btn);
-        });
-        showTeam(0);
+      function personCard(assignment) {
+        const person = assignment.person || {};
+        const classes = ["person"];
+        if (assignment.is_founder) classes.push("is-founder");
+        else if (assignment.is_manager) classes.push("is-manager");
+        const haystack = `${person.full_name || ""} ${assignment.role || ""}`.toLowerCase();
+
+        return `
+          <article class="${classes.join(" ")}" data-search="${escapeHtml(haystack)}">
+            <img
+              src="${window.Orga.photoUrl(person.photo_path)}"
+              alt="${escapeHtml(person.full_name)}"
+              loading="lazy"
+              onerror="this.src = window.Orga.AVATAR_PLACEHOLDER"
+            />
+            <span class="name">${escapeHtml(person.full_name)}</span>
+            <span class="role">${escapeHtml(assignment.role)}</span>
+          </article>
+        `;
+      }
+
+      function cardsGrid(assignments) {
+        const centered = assignments.some(assignment => assignment.is_founder);
+        return `
+          <div class="cards${centered ? " centered" : ""}">
+            ${assignments.map(personCard).join("")}
+          </div>
+        `;
       }
 
       function showTeam(index) {
-        navContainer.querySelectorAll("button").forEach((b, i) => b.classList.toggle("active", i === index));
-        const team = data[index];
+        tabsEl.querySelectorAll("button").forEach((btn, i) => btn.classList.toggle("active", i === index));
 
-        // Affichage du Dirigeant / Logo en haut
+        const team = teams[index];
+        if (!team) return;
+        const total = countPeople(team);
+
         let html = `
-                <div class="leader-header">
-                    <div class="leader-img-wrapper">
-                        <img src="${team.leader.img}" alt="${team.leader.name}" onerror="this.src='https://via.placeholder.com/150'">
-                    </div>
-                    <div class="leader-info">
-                        <h1>${team.leader.name}</h1>
-                        <p>${team.leader.role}</p>
-                    </div>
-                </div>
+          <section class="team-head">
+            <img
+              class="portrait"
+              src="${window.Orga.photoUrl(team.leader_photo_path)}"
+              alt="${escapeHtml(team.leader_name)}"
+              onerror="this.src = window.Orga.AVATAR_PLACEHOLDER"
+            />
+            <div>
+              <p class="eyebrow">${escapeHtml(team.label)}</p>
+              <h2>${escapeHtml(team.leader_name)}</h2>
+              <p class="role">${escapeHtml(team.leader_role)}</p>
+            </div>
+            <p class="count"><strong>${total}</strong>${total > 1 ? "collaborateurs" : "collaborateur"}</p>
+          </section>
+        `;
+
+        team.groups.forEach(group => {
+          const groupTotal = group.sub_groups.reduce((sum, sub) => sum + sub.assignments.length, 0);
+          html += '<section class="block">';
+          // Un bloc sans titre (la direction, par exemple) se passe d'en-tete
+          if (group.title) {
+            html += `
+              <div class="block-head">
+                <h3>${escapeHtml(group.title)}</h3>
+                <span class="tally">${groupTotal}</span>
+              </div>
             `;
-
-        team.rows.forEach((row) => {
-          html += `<div class="team-row-container"><div class="row-title">${row.title}</div>`;
-
-          // Fonction utilitaire pour générer le HTML d'une carte membre
-          const createMemberCard = (member) => {
-            // DÉTECTION DU TYPE DE CARTE (Fondateur vs Manager vs Standard)
-            let containerClass = "card-container";
-            let cardClass = "card";
-
-            if (member.isFounder) {
-              containerClass += " founder-container"; // Active la taille XXL
-              cardClass += " is-founder"; // Active le style Doré
-            } else if (member.isManager) {
-              cardClass += " is-manager"; // Active le style Bleu
-            }
-
-            return `
-                        <div class="${containerClass}">
-                            <div class="${cardClass}">
-                                <img src="${member.img}" alt="${member.name}" onerror="this.src='https://via.placeholder.com/100'">
-                                <h3>${member.name}</h3>
-                                <span>${member.role}</span>
-                            </div>
-                        </div>
-                    `;
-          };
-
-          // CAS A : Sous-Lignes
-          if (row.subLines) {
-            row.subLines.forEach((subLine) => {
-              html += `<div class="sub-line">`;
-              if (subLine.label) html += `<div class="sub-line-label">${subLine.label}</div>`;
-
-              subLine.members.forEach((member) => {
-                html += createMemberCard(member);
-              });
-              html += `</div>`;
-            });
-          }
-          // CAS B : Ligne simple
-          else {
-            html += `<div class="cards-wrapper">`;
-            row.members.forEach((member) => {
-              html += createMemberCard(member);
-            });
-            html += `</div>`;
           }
 
-          html += `</div>`;
+          if (window.Orga.isFlatGroup(group)) {
+            html += cardsGrid(group.sub_groups[0].assignments);
+          } else {
+            group.sub_groups.forEach(subGroup => {
+              html += '<div class="subline">';
+              if (subGroup.label) {
+                html += `
+                  <h4 class="subline-label">
+                    ${escapeHtml(subGroup.label)}
+                    <span class="tally">${subGroup.assignments.length}</span>
+                  </h4>
+                `;
+              }
+              html += cardsGrid(subGroup.assignments);
+              html += "</div>";
+            });
+          }
+
+          html += "</section>";
         });
 
-        displayArea.innerHTML = html;
+        contentEl.innerHTML = html;
+        applySearch();
+      }
+
+      // Filtre les cartes de l'onglet courant, puis masque les sections vides
+      function applySearch() {
+        const query = searchEl.value.trim().toLowerCase();
+        let visible = 0;
+        contentEl.classList.toggle("filtering", query.length > 0);
+
+        contentEl.querySelectorAll(".person").forEach(card => {
+          const match = !query || card.dataset.search.includes(query);
+          card.classList.toggle("hidden", !match);
+          if (match) visible++;
+        });
+
+        contentEl.querySelectorAll(".subline").forEach(subline => {
+          subline.classList.toggle("hidden", !subline.querySelector(".person:not(.hidden)"));
+        });
+
+        contentEl.querySelectorAll(".block").forEach(block => {
+          block.classList.toggle("hidden", !block.querySelector(".person:not(.hidden)"));
+        });
+
+        const previous = contentEl.querySelector(".state.no-result");
+        if (previous) previous.remove();
+        if (query && visible === 0) {
+          contentEl.insertAdjacentHTML(
+            "beforeend",
+            `<div class="state no-result">
+               <h2>Aucun resultat pour "${escapeHtml(searchEl.value.trim())}"</h2>
+               <p>La recherche porte sur l'onglet affiche.</p>
+             </div>`,
+          );
+        }
+      }
+
+      function showState(title, detail, isError) {
+        tabsEl.innerHTML = "";
+        contentEl.innerHTML = `
+          <div class="state${isError ? " error" : ""}">
+            <h2>${escapeHtml(title)}</h2>
+            ${detail ? `<p>${escapeHtml(detail)}</p>` : ""}
+          </div>
+        `;
+      }
+
+      async function init() {
+        try {
+          teams = await window.Orga.loadTree();
+        } catch (error) {
+          showState("Impossible de charger l'organigramme", error.message, true);
+          return;
+        }
+
+        if (!teams.length) {
+          showState("Aucune equipe enregistree", "Ajoutez un onglet depuis la page Administration.", false);
+          return;
+        }
+
+        tabsEl.innerHTML = "";
+        teams.forEach((team, index) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = team.label;
+          btn.onclick = () => showTeam(index);
+          tabsEl.appendChild(btn);
+        });
+
+        searchEl.addEventListener("input", applySearch);
+        showTeam(0);
       }
 
       init();
