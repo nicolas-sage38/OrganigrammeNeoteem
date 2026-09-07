@@ -4,26 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Organigramme Neoteem</title>
+    <link rel="icon" href="assets/favicon.jpg" />
     <style>
       :root {
         /* Marque */
+        --navy-deep: #01203f;
         --navy: #013677;
+        --teal-deep: #016b7a;
         --teal: #00a998;
+        --gradient: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
 
         /* Neutres */
-        --ink: #0f1b2d;
-        --ink-2: #56616f;
-        --ink-3: #8b95a2;
-        --line: #e5e8ec;
-        --line-2: #d4d9e0;
+        --ink: #0d1a2b;
+        --ink-2: #53606f;
+        --ink-3: #8a94a2;
+        --line: #e6e9ee;
+        --line-2: #d3d9e2;
         --surface: #ffffff;
-        --canvas: #f6f7f9;
-        --tint: #f2f6fa;
+        --canvas: #f4f6f9;
+        --tint: #eef3f9;
 
+        --radius-lg: 18px;
         --radius: 14px;
         --radius-sm: 10px;
-        --shadow: 0 1px 2px rgba(15, 27, 45, 0.04);
-        --shadow-lift: 0 6px 18px rgba(15, 27, 45, 0.08);
+
+        --shadow-card: 0 1px 2px rgba(1, 32, 63, 0.04), 0 8px 24px rgba(1, 32, 63, 0.04);
+        --shadow-hover: 0 12px 28px rgba(1, 32, 63, 0.12);
+        --shadow-hero: 0 18px 40px rgba(1, 32, 63, 0.28);
+
+        --topbar-h: 56px;
 
         --font:
           "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial,
@@ -58,14 +67,15 @@
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 20;
-        background: var(--surface);
-        border-bottom: 1px solid var(--line);
+        z-index: 30;
+        height: var(--topbar-h);
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 18px;
         padding: 0 28px;
-        height: 64px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid var(--line);
       }
 
       .brand {
@@ -74,18 +84,17 @@
       }
 
       .brand img {
-        height: 30px;
+        height: 26px;
         width: auto;
         display: block;
       }
 
       .topbar h1 {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         font-weight: 600;
         letter-spacing: 0.01em;
-        padding-left: 20px;
+        padding-left: 18px;
         border-left: 1px solid var(--line);
-        color: var(--ink);
       }
 
       .topbar .spacer {
@@ -100,16 +109,16 @@
 
       .search input {
         font-family: inherit;
-        font-size: 0.85rem;
+        font-size: 0.84rem;
         color: var(--ink);
         background: var(--canvas);
         border: 1px solid var(--line);
         border-radius: 50px;
         padding: 8px 16px 8px 36px;
-        width: 260px;
+        width: 250px;
         transition:
           border-color 0.15s ease,
-          background 0.15s ease,
+          box-shadow 0.15s ease,
           width 0.15s ease;
       }
 
@@ -121,7 +130,8 @@
         outline: none;
         background: var(--surface);
         border-color: var(--navy);
-        width: 300px;
+        box-shadow: 0 0 0 3px var(--tint);
+        width: 290px;
       }
 
       .search svg {
@@ -136,17 +146,115 @@
       }
 
       .admin-link {
-        font-size: 0.8rem;
+        font-size: 0.79rem;
+        font-weight: 500;
         color: var(--ink-3);
         text-decoration: none;
-        padding: 6px 0;
-        border-bottom: 1px solid transparent;
         transition: color 0.15s ease;
       }
 
       .admin-link:hover {
         color: var(--navy);
-        border-bottom-color: var(--line-2);
+      }
+
+      /* ---------------------------------------------------------------
+         Bandeau de l'equipe
+      --------------------------------------------------------------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 42px 28px 46px 28px;
+        color: white;
+        background: linear-gradient(
+          112deg,
+          var(--navy-deep) 0%,
+          var(--navy) 36%,
+          var(--teal-deep) 72%,
+          var(--teal) 100%
+        );
+      }
+
+      /* Halo pour donner du volume au degrade */
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(115% 150% at 86% -10%, rgba(255, 255, 255, 0.22), transparent 55%);
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1360px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .hero-avatar {
+        display: block;
+        flex: none;
+        width: 104px;
+        height: 104px;
+        border-radius: 50%;
+        padding: 3px;
+        background: rgba(255, 255, 255, 0.34);
+        box-shadow: var(--shadow-hero);
+      }
+
+      .hero-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        background: var(--tint);
+        border: 2px solid rgba(255, 255, 255, 0.92);
+      }
+
+      .hero .eyebrow {
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .hero h2 {
+        font-size: clamp(1.55rem, 3vw, 2.1rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 6px 0 2px 0;
+      }
+
+      .hero .role {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .hero-stats {
+        margin-left: auto;
+        display: flex;
+        gap: 38px;
+      }
+
+      .hero-stats strong {
+        display: block;
+        font-size: 1.85rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .hero-stats span {
+        font-size: 0.66rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        color: rgba(255, 255, 255, 0.66);
       }
 
       /* ---------------------------------------------------------------
@@ -154,13 +262,14 @@
       --------------------------------------------------------------- */
       .tabs {
         position: sticky;
-        top: 64px;
-        z-index: 19;
-        background: var(--surface);
-        border-bottom: 1px solid var(--line);
+        top: var(--topbar-h);
+        z-index: 20;
         display: flex;
-        gap: 4px;
+        gap: 2px;
         padding: 0 28px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid var(--line);
         overflow-x: auto;
         scrollbar-width: none;
       }
@@ -177,13 +286,23 @@
         font-size: 0.85rem;
         font-weight: 500;
         color: var(--ink-2);
-        padding: 14px 14px 13px 14px;
+        padding: 15px 16px 14px 16px;
         cursor: pointer;
         white-space: nowrap;
-        border-bottom: 2px solid transparent;
-        transition:
-          color 0.15s ease,
-          border-color 0.15s ease;
+        transition: color 0.15s ease;
+      }
+
+      .tabs button::after {
+        content: "";
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 0;
+        height: 2px;
+        border-radius: 2px 2px 0 0;
+        background: var(--gradient);
+        opacity: 0;
+        transition: opacity 0.18s ease;
       }
 
       .tabs button:hover {
@@ -193,7 +312,10 @@
       .tabs button.active {
         color: var(--navy);
         font-weight: 600;
-        border-bottom-color: var(--navy);
+      }
+
+      .tabs button.active::after {
+        opacity: 1;
       }
 
       /* ---------------------------------------------------------------
@@ -202,177 +324,146 @@
       main {
         max-width: 1360px;
         margin: 0 auto;
-        padding: 28px 28px 80px 28px;
+        padding: 26px 28px 80px 28px;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 18px;
       }
 
-      .eyebrow {
-        font-size: 0.68rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--teal);
-      }
-
-      /* Tete d'onglet */
-      .team-head {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 22px 26px;
-        display: flex;
-        align-items: center;
-        gap: 22px;
-      }
-
-      .team-head .portrait {
-        width: 84px;
-        height: 84px;
-        border-radius: 50%;
-        object-fit: cover;
-        background: var(--tint);
-        box-shadow: 0 0 0 1px var(--line-2);
-        flex: none;
-      }
-
-      .team-head h2 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        margin-top: 3px;
-      }
-
-      .team-head .role {
-        font-size: 0.88rem;
-        color: var(--ink-2);
-      }
-
-      .team-head .count {
-        margin-left: auto;
-        text-align: right;
-        font-size: 0.78rem;
-        color: var(--ink-3);
-        line-height: 1.3;
-      }
-
-      .team-head .count strong {
-        display: block;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--ink);
-      }
-
-      /* Bloc */
       .block {
         background: var(--surface);
         border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 20px 26px 24px 26px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 22px 26px 26px 26px;
       }
 
       .block-head {
         display: flex;
-        align-items: baseline;
-        gap: 10px;
-        padding-bottom: 14px;
-        margin-bottom: 6px;
-        border-bottom: 1px solid var(--line);
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 4px;
       }
 
       .block-head h3 {
         font-size: 0.8rem;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.09em;
+        letter-spacing: 0.1em;
         color: var(--ink);
       }
 
-      .block-head .tally {
-        font-size: 0.72rem;
-        color: var(--ink-3);
+      /* Filet qui se dissipe apres le titre */
+      .block-head::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--line-2), transparent);
+      }
+
+      .chip {
+        font-size: 0.69rem;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--tint);
+        border-radius: 50px;
+        padding: 3px 10px;
         font-variant-numeric: tabular-nums;
+        flex: none;
       }
 
       /* Sous-ligne */
+      .subline {
+        padding-top: 18px;
+      }
+
       .subline + .subline {
         border-top: 1px solid var(--line);
+        margin-top: 6px;
       }
 
       .subline-label {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 0.72rem;
-        font-weight: 600;
+        gap: 10px;
+        font-size: 0.71rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.09em;
+        letter-spacing: 0.1em;
         color: var(--ink-2);
-        padding: 18px 0 2px 0;
+        margin-bottom: 4px;
       }
 
       .subline-label::before {
         content: "";
-        width: 14px;
-        height: 2px;
-        background: var(--teal);
         flex: none;
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--gradient);
       }
 
-      /* Grille de cartes */
+      /* ---------------------------------------------------------------
+         Cartes
+      --------------------------------------------------------------- */
       .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
-        gap: 4px;
-        padding: 12px 0 0 0;
-      }
-
-      .cards.centered {
-        grid-template-columns: repeat(auto-fit, minmax(210px, 240px));
-        justify-content: center;
+        grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
         gap: 12px;
-        padding-top: 18px;
+        padding-top: 16px;
       }
 
-      /* Carte */
+      .cards.featured {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 274px));
+        justify-content: center;
+        gap: 18px;
+        padding-top: 8px;
+      }
+
       .person {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 2px;
-        padding: 16px 10px 14px 10px;
-        border: 1px solid transparent;
-        border-radius: var(--radius-sm);
+        gap: 3px;
+        padding: 18px 12px 16px 12px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
         transition:
-          border-color 0.15s ease,
-          background 0.15s ease,
-          transform 0.15s ease,
-          box-shadow 0.15s ease;
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          border-color 0.18s ease;
       }
 
       .person:hover {
-        background: var(--surface);
-        border-color: var(--line);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lift);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--line-2);
       }
 
-      .person img {
-        width: 74px;
-        height: 74px;
+      .avatar {
+        display: block;
+        flex: none;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        padding: 1px;
+        margin-bottom: 12px;
+        background: var(--line-2);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
         object-fit: cover;
+        display: block;
         background: var(--tint);
-        box-shadow: 0 0 0 1px var(--line-2);
-        margin-bottom: 10px;
       }
 
       .person .name {
-        font-size: 0.84rem;
+        font-size: 0.85rem;
         font-weight: 600;
         line-height: 1.3;
         letter-spacing: -0.005em;
@@ -384,40 +475,45 @@
         line-height: 1.35;
       }
 
-      /* Responsable : anneau teal, pas de pave de couleur */
-      .person.is-manager img {
-        box-shadow:
-          0 0 0 2px var(--teal),
-          0 0 0 4px var(--surface);
+      /* Responsable : anneau degrade */
+      .person.is-manager .avatar {
+        padding: 2.5px;
+        background: var(--gradient);
+      }
+
+      .person.is-manager .avatar img {
+        border: 2px solid var(--surface);
       }
 
       .person.is-manager .role {
-        color: var(--teal);
+        color: var(--navy);
         font-weight: 600;
       }
 
-      /* Direction : carte plus large, anneau navy */
+      /* Direction : carte mise en avant */
       .person.is-founder {
-        padding: 26px 18px 22px 18px;
-        border-color: var(--line);
-        background: var(--surface);
+        padding: 30px 22px 26px 22px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       }
 
-      .person.is-founder img {
-        width: 124px;
-        height: 124px;
-        margin-bottom: 16px;
-        box-shadow:
-          0 0 0 2px var(--navy),
-          0 0 0 4px var(--surface);
+      .person.is-founder .avatar {
+        width: 132px;
+        height: 132px;
+        padding: 3px;
+        margin-bottom: 18px;
+        background: var(--gradient);
+      }
+
+      .person.is-founder .avatar img {
+        border: 3px solid var(--surface);
       }
 
       .person.is-founder .name {
-        font-size: 1rem;
+        font-size: 1.05rem;
       }
 
       .person.is-founder .role {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         color: var(--ink-2);
       }
 
@@ -427,13 +523,14 @@
       .state {
         background: var(--surface);
         border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 40px 30px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 44px 30px;
         text-align: center;
       }
 
       .state h2 {
-        font-size: 0.95rem;
+        font-size: 0.98rem;
         font-weight: 600;
       }
 
@@ -457,16 +554,17 @@
       }
 
       /* Pendant une recherche, les compteurs de section ne veulent plus rien dire */
-      main.filtering .tally {
+      main.filtering .chip {
         display: none;
       }
 
-      @media (max-width: 720px) {
+      @media (max-width: 760px) {
         .topbar {
           height: auto;
           padding: 12px 18px;
           flex-wrap: wrap;
           gap: 12px;
+          position: static;
         }
 
         .topbar h1 {
@@ -474,13 +572,6 @@
           border-left: none;
         }
 
-        .tabs {
-          position: static;
-          padding: 0 18px;
-        }
-
-        /* Le titre et le lien admin restent sur la premiere ligne,
-           la recherche prend toute la seconde */
         .topbar .spacer {
           display: none;
         }
@@ -500,21 +591,45 @@
           width: 100%;
         }
 
+        .hero {
+          padding: 30px 18px 32px 18px;
+        }
+
+        .hero-inner {
+          gap: 18px;
+        }
+
+        .hero-avatar {
+          width: 76px;
+          height: 76px;
+        }
+
+        .hero-stats {
+          margin-left: 0;
+          gap: 26px;
+          padding-top: 4px;
+        }
+
+        .hero-stats strong {
+          font-size: 1.4rem;
+        }
+
+        .tabs {
+          position: static;
+          padding: 0 18px;
+        }
+
         main {
           padding: 18px 18px 60px 18px;
         }
 
         .block {
-          padding: 18px 16px;
+          padding: 18px 16px 20px 16px;
         }
 
-        .team-head {
-          padding: 18px;
-          gap: 16px;
-        }
-
-        .team-head .count {
-          display: none;
+        .cards {
+          grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+          gap: 8px;
         }
       }
     </style>
@@ -535,6 +650,7 @@
       <a class="admin-link" href="admin.html">Administration</a>
     </header>
 
+    <div id="hero"></div>
     <nav class="tabs" id="tabs"></nav>
 
     <main id="content">
@@ -547,6 +663,7 @@
     <script>
       // Les donnees viennent integralement de Supabase (voir db/schema.sql).
       // Toute modification se fait depuis admin.html.
+      const heroEl = document.getElementById("hero");
       const tabsEl = document.getElementById("tabs");
       const contentEl = document.getElementById("content");
       const searchEl = document.getElementById("search");
@@ -560,11 +677,22 @@
         );
       }
 
-      function countPeople(team) {
-        return team.groups.reduce(
-          (total, group) => total + group.sub_groups.reduce((sum, sub) => sum + sub.assignments.length, 0),
-          0,
+      function teamCounts(team) {
+        let people = 0;
+        let managers = 0;
+        team.groups.forEach(group =>
+          group.sub_groups.forEach(sub =>
+            sub.assignments.forEach(assignment => {
+              people++;
+              if (assignment.is_manager) managers++;
+            }),
+          ),
         );
+        return { people, sections: team.groups.length, managers };
+      }
+
+      function plural(count, word) {
+        return count > 1 ? word + "s" : word;
       }
 
       function personCard(assignment) {
@@ -576,12 +704,14 @@
 
         return `
           <article class="${classes.join(" ")}" data-search="${escapeHtml(haystack)}">
-            <img
-              src="${window.Orga.photoUrl(person.photo_path)}"
-              alt="${escapeHtml(person.full_name)}"
-              loading="lazy"
-              onerror="this.src = window.Orga.AVATAR_PLACEHOLDER"
-            />
+            <span class="avatar">
+              <img
+                src="${window.Orga.photoUrl(person.photo_path)}"
+                alt="${escapeHtml(person.full_name)}"
+                loading="lazy"
+                onerror="this.src = window.Orga.AVATAR_PLACEHOLDER"
+              />
+            </span>
             <span class="name">${escapeHtml(person.full_name)}</span>
             <span class="role">${escapeHtml(assignment.role)}</span>
           </article>
@@ -589,9 +719,9 @@
       }
 
       function cardsGrid(assignments) {
-        const centered = assignments.some(assignment => assignment.is_founder);
+        const featured = assignments.some(assignment => assignment.is_founder);
         return `
-          <div class="cards${centered ? " centered" : ""}">
+          <div class="cards${featured ? " featured" : ""}">
             ${assignments.map(personCard).join("")}
           </div>
         `;
@@ -602,34 +732,55 @@
 
         const team = teams[index];
         if (!team) return;
-        const total = countPeople(team);
+        const counts = teamCounts(team);
 
-        let html = `
-          <section class="team-head">
-            <img
-              class="portrait"
-              src="${window.Orga.photoUrl(team.leader_photo_path)}"
-              alt="${escapeHtml(team.leader_name)}"
-              onerror="this.src = window.Orga.AVATAR_PLACEHOLDER"
-            />
-            <div>
-              <p class="eyebrow">${escapeHtml(team.label)}</p>
-              <h2>${escapeHtml(team.leader_name)}</h2>
-              <p class="role">${escapeHtml(team.leader_role)}</p>
+        heroEl.innerHTML = `
+          <section class="hero">
+            <div class="hero-inner">
+              <span class="hero-avatar">
+                <img
+                  src="${window.Orga.photoUrl(team.leader_photo_path)}"
+                  alt="${escapeHtml(team.leader_name)}"
+                  onerror="this.src = window.Orga.AVATAR_PLACEHOLDER"
+                />
+              </span>
+              <div>
+                <p class="eyebrow">${escapeHtml(team.label)}</p>
+                <h2>${escapeHtml(team.leader_name)}</h2>
+                <p class="role">${escapeHtml(team.leader_role)}</p>
+              </div>
+              <div class="hero-stats">
+                <div>
+                  <strong>${counts.people}</strong>
+                  <span>${plural(counts.people, "collaborateur")}</span>
+                </div>
+                <div>
+                  <strong>${counts.sections}</strong>
+                  <span>${plural(counts.sections, "section")}</span>
+                </div>
+                ${
+                  counts.managers
+                    ? `<div>
+                         <strong>${counts.managers}</strong>
+                         <span>${plural(counts.managers, "responsable")}</span>
+                       </div>`
+                    : ""
+                }
+              </div>
             </div>
-            <p class="count"><strong>${total}</strong>${total > 1 ? "collaborateurs" : "collaborateur"}</p>
           </section>
         `;
 
+        let html = "";
         team.groups.forEach(group => {
-          const groupTotal = group.sub_groups.reduce((sum, sub) => sum + sub.assignments.length, 0);
+          const total = group.sub_groups.reduce((sum, sub) => sum + sub.assignments.length, 0);
           html += '<section class="block">';
           // Un bloc sans titre (la direction, par exemple) se passe d'en-tete
           if (group.title) {
             html += `
               <div class="block-head">
                 <h3>${escapeHtml(group.title)}</h3>
-                <span class="tally">${groupTotal}</span>
+                <span class="chip">${total}</span>
               </div>
             `;
           }
@@ -643,7 +794,7 @@
                 html += `
                   <h4 class="subline-label">
                     ${escapeHtml(subGroup.label)}
-                    <span class="tally">${subGroup.assignments.length}</span>
+                    <span class="chip">${subGroup.assignments.length}</span>
                   </h4>
                 `;
               }
@@ -693,6 +844,7 @@
       }
 
       function showState(title, detail, isError) {
+        heroEl.innerHTML = "";
         tabsEl.innerHTML = "";
         contentEl.innerHTML = `
           <div class="state${isError ? " error" : ""}">

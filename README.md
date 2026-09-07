@@ -64,8 +64,8 @@ les modifications se font depuis `admin.html`, pas en relancant la migration.
 
 - **Structure** : creer, renommer, reordonner et supprimer les onglets, les blocs et les sous-lignes ;
   definir la tete d'affiche de chaque onglet ; ajouter une personne a une sous-ligne, changer son
-  role affiche, la marquer **Responsable** (anneau turquoise sur la photo) ou **Direction**
-  (grande carte, anneau navy), la deplacer ou la retirer
+  role affiche, la marquer **Responsable** (anneau degrade sur la photo et role en navy) ou
+  **Direction** (grande carte mise en avant), la deplacer ou la retirer
 - **Personnes** : creer une fiche, renommer, changer ou retirer la photo, supprimer (avec le nombre
   de cartes concernees en garde-fou)
 
