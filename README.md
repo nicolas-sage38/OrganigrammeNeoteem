@@ -60,7 +60,7 @@ les modifications se font depuis `admin.html`, pas en relancant la migration.
 
 ## Back-office
 
-`admin.html` demande une connexion (Supabase Auth, email + mot de passe), puis permet de :
+`admin.html` demande un **mot de passe unique**, puis permet de :
 
 - **Structure** : creer, renommer, reordonner et supprimer les onglets, les blocs et les sous-lignes ;
   definir la tete d'affiche de chaque onglet ; ajouter une personne a une sous-ligne, changer son
@@ -69,8 +69,33 @@ les modifications se font depuis `admin.html`, pas en relancant la migration.
 - **Personnes** : creer une fiche, renommer, changer ou retirer la photo, supprimer (avec le nombre
   de cartes concernees en garde-fou)
 
-Les comptes se gerent dans **Supabase > Authentication > Users**. Tout compte authentifie a les
-droits d'ecriture complets.
+### Comment fonctionne ce mot de passe
+
+L'ecran ne demande qu'un mot de passe, mais il ne le verifie pas dans le navigateur : ce serait
+sans valeur, puisque le code de la page est lisible par tout le monde. La page se connecte a
+Supabase Auth avec un compte partage dont **l'adresse est une constante du fichier**
+(`ADMIN_EMAIL`, `organigramme@neoteem.fr`) et le mot de passe saisi. C'est Supabase qui verifie,
+cote serveur, et qui delivre la session sans laquelle les policies RLS refusent toute ecriture.
+
+Consequence : l'adresse n'est pas un secret, le mot de passe en est un.
+
+Pour changer le mot de passe, dans **Supabase > Authentication > Users**, ouvrir
+`organigramme@neoteem.fr` et utiliser *Reset password*. Rien a redeployer.
+
+Un mot de passe partage ne dit pas qui a fait quoi. Si la tracabilite devient necessaire, il suffit
+de creer un compte par personne dans Supabase, de les ajouter a la table `admins`, et de remettre
+un champ email dans l'ecran de connexion.
+
+### Restreindre l'ecriture
+
+Par defaut, les policies autorisent l'ecriture a **tout compte authentifie**, et l'inscription est
+ouverte sur le projet Supabase : n'importe qui peut donc se creer un compte et modifier
+l'organigramme. Deux gestes ferment cette porte :
+
+1. **Supabase > Authentication > Sign In / Providers > Email** : decocher
+   *Allow new users to sign up*
+2. Executer `db/migration-admins.sql` : l'ecriture devient reservee aux comptes listes dans la
+   table `admins`
 
 ## Developpement local
 

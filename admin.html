@@ -735,6 +735,11 @@
       const app = document.getElementById("app");
       const statusBar = document.getElementById("status-bar");
 
+      // Compte partage du back-office. L adresse n est pas un secret : elle sert
+      // uniquement a identifier le compte cote Supabase, qui verifie le mot de
+      // passe. C est ce mot de passe, et lui seul, qui donne les droits d ecriture.
+      const ADMIN_EMAIL = "organigramme@neoteem.fr";
+
       const state = {
         user: null,
         tab: "structure",
@@ -951,19 +956,27 @@
       //  Vue : connexion
       // ----------------------------------------------------------------
       function renderLogin() {
-        const email = h("input", { type: "email", placeholder: "prenom.nom@neoteem.fr", autocomplete: "username" });
-        const password = h("input", { type: "password", autocomplete: "current-password" });
+        const password = h("input", {
+          type: "password",
+          autocomplete: "current-password",
+          autofocus: true,
+          placeholder: "Mot de passe d'administration",
+        });
 
         const submit = async () => {
+          if (!password.value) return;
           state.loginError = null;
           setStatus("Connexion...");
           const { error } = await client.auth.signInWithPassword({
-            email: email.value.trim(),
+            email: ADMIN_EMAIL,
             password: password.value,
           });
           setStatus("");
           if (error) {
-            state.loginError = error.message;
+            // Supabase repond en anglais et de facon generique : on traduit
+            state.loginError = /invalid login credentials/i.test(error.message)
+              ? "Mot de passe incorrect."
+              : error.message;
             render();
           }
         };
@@ -982,9 +995,8 @@
               { class: "panel" },
               h("h2", { text: "Administration de l'organigramme" }),
               state.loginError && h("div", { class: "message", text: state.loginError }),
-              h("label", { class: "field" }, "Email", email),
               h("label", { class: "field" }, "Mot de passe", password),
-              h("button", { class: "btn", onclick: submit }, "Se connecter"),
+              h("button", { class: "btn", onclick: submit }, "Entrer"),
               h("a", { href: "index.html", class: "hint", style: "text-decoration:none" }, "Retour au trombinoscope"),
             ),
           ),
@@ -1416,7 +1428,7 @@
             ),
             h("h1", { text: "Administration" }),
             h("span", { class: "spacer" }),
-            h("span", { class: "user-mail", text: state.user.email }),
+            h("span", { class: "user-mail", text: "Session administrateur" }),
             h("a", { href: "index.html", target: "_blank" }, "Trombinoscope"),
             h(
               "a",
